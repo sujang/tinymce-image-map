@@ -1,16 +1,45 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+  <script src="//cdn.tinymce.com/4/tinymce.js"></script>
   <script>
     tinymce.init({
-      selector:'textarea',
-      plugins: 'tinymceImageMap',
-      toolbar: 'tinymceImageMap'
+      selector: 'textarea#editable',
+      plugins: 'tinymceImageMap code autoresize contextmenu',
+      toolbar: 'tinymceImageMap code',
+      contextmenu: "tinymceImageMap bold",
+      width: '80%',
+      autoresize_bottom_margin: 50,
+      autoresize_max_height: 900
     });
+
+    //Initial content
+    const initialHTML = `
+    <div>
+      <p>Testing tinymceImageMap</p>
+      <img src="static/assets/bulbs.jpeg" width="640" useMap="testmap">
+      <map name="testmap">
+        <area shape="circle" href="https://www.google.com" coords="50,50,45" target="_blank"/>
+      </map>
+    </div>
+    `;
+    window.onload = () => {
+      tinymce.activeEditor.setContent(initialHTML);
+    }
   </script>
+  <style>
+    .container {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
 </head>
+
 <body>
-  <textarea>Testing tinymceImageMap</textarea>
+  <div class="container">
+    <textarea id="editable"></textarea>
+  </div>
 </body>
+
 </html>

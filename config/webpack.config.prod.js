@@ -1,10 +1,11 @@
 const path = require("path");
-const webpack = require("webpack");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const pluginName = "tinymce-image-map";
 
 module.exports = {
+  mode: "production",
   entry: {
     plugin: "./src/index.js",
     "plugin.min": "./src/index.js"
@@ -22,11 +23,14 @@ module.exports = {
       }
     ]
   },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        include: /\.min\.js$/
+      })
+    ]
+  },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({
-      include: /\.min\.js$/,
-      minimize: true
-    }),
     new CopyWebpackPlugin([
       {
         from: path.join(__dirname, "../src/LICENSE"),
