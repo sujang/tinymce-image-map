@@ -1,20 +1,22 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin')
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: './src/index.js',
+  mode: "development",
+  devtool: "inline-source-map",
+  entry: "./src/index.js",
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        use: "babel-loader"
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       inject: true,
-      template: './static/index.html'
+      template: "./static/index.html"
     })
   ]
-}
+};
