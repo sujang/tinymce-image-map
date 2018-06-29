@@ -171,7 +171,6 @@ class App {
       let shape = area.toShape(this.context);
       this.maps.push(shape);
     });
-    console.log(this.maps);
   }
 }
 

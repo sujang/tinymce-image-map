@@ -4,7 +4,6 @@ import Polygon from "./polygon";
 import SHAPES from "./shapes";
 
 const ShapeFactory = (shape, options) => {
-  console.log(options)
   const { context, drawCoords, areaCoords } = options;
   let shapeObj;
   switch (shape) {
