@@ -1,13 +1,14 @@
-import Point from "./../shapes/point";
-
 const move = {
-  onMouseDown(scope, coords, e) {
-    scope.focusedShape.select().drag().setMoveOffset(coords);
+  onMouseDown(scope, coords) {
+    scope.focusedShape
+      .select()
+      .drag()
+      .setMoveOffset(coords);
   },
-  onMouseMove(scope, coords, e) {
+  onMouseMove(scope, coords) {
     scope.focusedShape.updateStartPoint(coords).updateCoordinates();
   },
-  onMouseUp(scope, coords, e) {
+  onMouseUp(scope) {
     scope.focusedShape.drop();
   }
 };

@@ -1,8 +1,8 @@
 import Shape from "./shapeClass";
 
 class Circle extends Shape {
-  constructor(coords, context) {
-    super(coords, context);
+  constructor(context) {
+    super(context);
     this.type = "circle";
   }
 
@@ -45,6 +45,44 @@ class Circle extends Shape {
   }
 
   updateDimensions() {
+    this.calculateBoundingBox();
+    const circle = {
+      cx: Math.round(this.dimensions.frame.x + this.dimensions.frame.w / 2),
+      cy: Math.round(this.dimensions.frame.y + this.dimensions.frame.h / 2),
+      r: Math.round(Math.abs(this.dimensions.frame.w / 2))
+    };
+    this.dimensions.shape = circle;
+    return this;
+  }
+
+  updateCoordinates() {
+    this.dimensions.frame = Object.assign(this.dimensions.frame, {
+      x: this.startPoint.x,
+      y: this.startPoint.y
+    });
+    this.dimensions.shape = Object.assign(this.dimensions.shape, {
+      cx: Math.round(this.dimensions.frame.x + this.dimensions.frame.w / 2),
+      cy: Math.round(this.dimensions.frame.y + this.dimensions.frame.h / 2),
+      r: Math.round(Math.abs(this.dimensions.frame.w / 2))
+    });
+    return this;
+  }
+
+  calcDrawCoords() {
+    this.startPoint = {
+      x: Math.round(this.dimensions.shape.cx - this.dimensions.shape.r + 2),
+      y: Math.round(this.dimensions.shape.cy - this.dimensions.shape.r + 2)
+    };
+    this.endPoint = {
+      x: Math.round(this.dimensions.shape.cx + this.dimensions.shape.r + 2),
+      y: Math.round(this.dimensions.shape.cy + this.dimensions.shape.r + 2)
+    };
+    this.moveOffSet = Object.assign({}, this.startPoint);
+    this.calculateBoundingBox();
+    return this;
+  }
+
+  calculateBoundingBox() {
     //Square frame that contains the circle
     let width = 0;
     let height = 0;
@@ -57,37 +95,12 @@ class Circle extends Shape {
       width = lengthY * (this.endPoint.x < this.startPoint.x ? -1 : 1);
       height = lengthY * (this.endPoint.y < this.startPoint.y ? -1 : 1);
     }
-
-    const frame = {
+    this.dimensions.frame = {
       x: this.startPoint.x,
       y: this.startPoint.y,
       w: Math.round(width),
       h: Math.round(height)
     };
-
-    const circle = {
-      cx: Math.round(frame.x + frame.w / 2),
-      cy: Math.round(frame.y + frame.h / 2),
-      r: Math.round(Math.abs(width / 2) - 2)
-    };
-
-    this.dimensions = {
-      frame: frame,
-      shape: circle
-    };
-    return this;
-  }
-
-  updateCoordinates() {
-    this.dimensions.frame = Object.assign(this.dimensions.frame, {
-      x: this.startPoint.x,
-      y: this.startPoint.y
-    });
-    this.dimensions.shape = Object.assign(this.dimensions.shape, {
-      cx: Math.round(this.dimensions.frame.x + this.dimensions.frame.w / 2),
-      cy: Math.round(this.dimensions.frame.y + this.dimensions.frame.h / 2),
-      r: Math.round(Math.abs(this.dimensions.frame.w / 2) - 2)
-    });
     return this;
   }
 }

@@ -1,13 +1,12 @@
 /*eslint no-console: ["error", {"allow": ["warn"]}]*/
-
 import Point from "./point";
 
 class Shape {
-  constructor(coords, context) {
+  constructor(context) {
     this.id = Date.now();
-    this.startPoint = coords.start;
-    this.endPoint = coords.end;
-    this.moveOffSet = coords.start;
+    this.startPoint;
+    this.endPoint;
+    this.moveOffSet;
     this.dimensions = { frame: {}, shape: {} };
     this.context = context;
     this.drawing = true;
@@ -19,7 +18,6 @@ class Shape {
   }
 
   //ABSTRACT METHODS
-
   draw() {
     console.warn("Implement method to render the shape");
   }
@@ -38,6 +36,10 @@ class Shape {
 
   updateCoordinates() {
     console.warn("Implement method to update the shape's location on canvas");
+  }
+
+  calcDrawCoords() {
+    console.warn("Implement method to update shape's draw coordinates");
   }
 
   //CLASS METHODS
@@ -92,6 +94,18 @@ class Shape {
 
   finishDrawing() {
     this.drawing = false;
+    return this;
+  }
+
+  setDrawCoords(coords) {
+    this.startPoint = coords.start;
+    this.endPoint = coords.end;
+    this.moveOffSet = coords.start;
+    return this;
+  }
+
+  setShapeDimensions(dimensions) {
+    this.dimensions.shape = dimensions;
     return this;
   }
 

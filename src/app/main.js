@@ -17,7 +17,6 @@ class App {
     this.isMouseDown = false;
     this.img;
 
-
     this.canvas.addEventListener("mousedown", e => this.mouseDown(e), false);
     this.canvas.addEventListener("mousemove", e => this.mouseMove(e), false);
     this.canvas.addEventListener("mouseup", e => this.mouseUp(e), false);
@@ -168,6 +167,11 @@ class App {
   init() {
     this.setShape();
     this.loadImage();
+    this.args.map.areas.forEach(area => {
+      let shape = area.toShape(this.context);
+      this.maps.push(shape);
+    });
+    console.log(this.maps);
   }
 }
 

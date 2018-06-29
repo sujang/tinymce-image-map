@@ -5,11 +5,10 @@ const draw = {
   onMouseDown(scope, coords, e) {
     const points = { start: coords, end: coords };
     if (!scope.shapeInProgress) {
-      scope.shapeInProgress = ShapeFactory(
-        scope.currentDrawShape,
-        points,
-        scope.context
-      );
+      scope.shapeInProgress = ShapeFactory(scope.currentDrawShape, {
+        context: scope.context,
+        drawCoords: points
+      });
       scope.shapeInProgress.updateDimensions();
       scope.maps.push(scope.shapeInProgress);
     } else if (e.shiftKey) {
@@ -20,7 +19,7 @@ const draw = {
     }
   },
 
-  onMouseMove(scope, coords, e) {
+  onMouseMove(scope, coords) {
     if (scope.shapeInProgress) {
       scope.shapeInProgress.type === SHAPES.POLYGON
         ? scope.shapeInProgress.updateEndPoint(coords).updateDimensions(true)
@@ -28,7 +27,7 @@ const draw = {
     }
   },
 
-  onMouseUp(scope, coords, e) {
+  onMouseUp(scope) {
     if (
       scope.shapeInProgress &&
       scope.shapeInProgress.type !== SHAPES.POLYGON

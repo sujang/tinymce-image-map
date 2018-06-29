@@ -1,8 +1,8 @@
 import Shape from "./shapeClass";
 
 class Rectangle extends Shape {
-  constructor(coords, context) {
-    super(coords, context);
+  constructor(context) {
+    super(context);
     this.type = "rect";
   }
 
@@ -23,12 +23,7 @@ class Rectangle extends Shape {
   }
 
   getAreaCoords() {
-    return {
-      startX: this.startPoint.x,
-      startY: this.startPoint.y,
-      endX: this.endPoint.x,
-      endY: this.endPoint.y
-    };
+    return this.dimensions.shape;
   }
 
   updateDimensions() {
@@ -50,6 +45,19 @@ class Rectangle extends Shape {
       y: this.startPoint.y
     });
     this.dimensions.shape = Object.assign({}, this.dimensions.frame);
+    return this;
+  }
+
+  calcDrawCoords() {
+    this.startPoint = {
+      x: this.dimensions.shape.x,
+      y: this.dimensions.shape.y
+    };
+    this.endPoint = {
+      x: this.dimensions.shape.x + this.dimensions.shape.w,
+      y: this.dimensions.shape.y + this.dimensions.shape.h
+    };
+    this.moveOffSet = Object.assign({}, this.startPoint);
     return this;
   }
 }
