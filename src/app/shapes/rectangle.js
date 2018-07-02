@@ -29,22 +29,22 @@ class Rectangle extends Shape {
   updateDimensions() {
     const width = this.endPoint.x - this.startPoint.x;
     const height = this.endPoint.y - this.startPoint.y;
-    this.dimensions.frame = {
+    this.dimensions.shape = {
       x: this.startPoint.x,
       y: this.startPoint.y,
       w: Math.round(width),
       h: Math.round(height)
     };
-    this.dimensions.shape = Object.assign({}, this.dimensions.frame);
+    this.dimensions.frame = Object.assign({}, this.dimensions.shape);
     return this;
   }
 
   updateCoordinates() {
-    this.dimensions.frame = Object.assign(this.dimensions.frame, {
+    this.dimensions.shape = Object.assign(this.dimensions.shape, {
       x: this.startPoint.x,
       y: this.startPoint.y
     });
-    this.dimensions.shape = Object.assign({}, this.dimensions.frame);
+    this.dimensions.frame = Object.assign({}, this.dimensions.shape);
     return this;
   }
 

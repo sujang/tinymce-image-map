@@ -17,7 +17,7 @@ const ShapeFactory = (shape, options) => {
       shapeObj = new Polygon(context);
       break;
     default:
-      throw new Error("Invalid shape passed to constructor");
+      throw new Error("Invalid shape passed to constructor: " + this.shape);
   }
   if (drawCoords) {
     shapeObj.setDrawCoords(drawCoords);

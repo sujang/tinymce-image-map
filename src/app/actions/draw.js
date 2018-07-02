@@ -10,7 +10,7 @@ const draw = {
         drawCoords: points
       });
       scope.shapeInProgress.updateDimensions();
-      scope.maps.push(scope.shapeInProgress);
+      scope.shapes.push(scope.shapeInProgress);
     } else if (e.shiftKey) {
       scope.shapeInProgress.updateEndPoint(coords).updateDimensions();
       finishDrawing.call(scope);
@@ -40,7 +40,7 @@ const draw = {
 function finishDrawing() {
   this.shapeInProgress.finishDrawing();
   this.shapeInProgress = undefined;
-  this.maps = this.maps.filter(removeInvalidShape);
+  this.shapes = this.shapes.filter(removeInvalidShape);
 }
 
 function removeInvalidShape(shape) {

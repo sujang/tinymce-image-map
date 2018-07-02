@@ -1,5 +1,6 @@
 /*eslint no-console: ["error", {"allow": ["warn"]}]*/
 import Point from "./point";
+import MapArea from "../mapUtils/mapArea";
 
 class Shape {
   constructor(context) {
@@ -15,6 +16,7 @@ class Shape {
     this.resizing = false;
     this.path = new Path2D();
     this.strokeStyle = "#000";
+    this.href;
   }
 
   //ABSTRACT METHODS
@@ -111,6 +113,10 @@ class Shape {
 
   inUse() {
     return this.drawing || this.moving || this.resizing;
+  }
+
+  toMapArea() {
+    return new MapArea(this.type, this.getAreaCoords(), this.href);
   }
 }
 

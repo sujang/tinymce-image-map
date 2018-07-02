@@ -1,11 +1,12 @@
-import mapLoader from "./app/mapper/mapLoader";
+import mapReader from "./app/mapUtils/mapReader";
+import mapWriter from "./app/mapUtils/mapWriter";
 
 const openDialog = editor => {
   let isImg = editor.selection.getNode().nodeName === "IMG";
   if (isImg) {
     const img = editor.selection.getNode();
     const map = editor.dom.select("map").find(item => item.name === img.useMap);
-    const areas = img.useMap === "" ? [] : mapLoader(Array.from(map.children));
+    const areas = img.useMap === "" ? [] : mapReader(Array.from(map.children));
     editor.windowManager.open(
       {
         title: "Manage Image Maps",
@@ -16,12 +17,17 @@ const openDialog = editor => {
           {
             text: "Close",
             onclick: "close"
+          },
+          {
+            text: "Save",
+            onclick: 'submit'
           }
         ],
-        onsubmit(e) {
+        onsubmit() {
           //TODO: Create/Update Image Maps
           // eslint-disable-next-line no-console
-          console.log(JSON.stringify(e.data, null, 2));
+          // console.log(e);
+          mapWriter(editor, map, img);
         }
       },
       {

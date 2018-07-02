@@ -1,7 +1,7 @@
 import ActionDispatcher from "./actions/actionDispatcher";
 import ACTIONS from "./actions/actions";
 import Point from "./shapes/point";
-import MapArea from "./mapper/mapArea";
+import MapArea from "./mapUtils/mapArea";
 import SHAPES from "./shapes/shapes";
 
 class App {
@@ -9,12 +9,12 @@ class App {
     this.args = args;
     this.canvas = document.getElementById("canvas");
     this.context = this.canvas.getContext("2d");
-    this.shapes = document.getElementsByName("shape");
+    this.shapeSelectors = document.getElementsByName("shapeSelect");
     this.currentDrawShape;
     this.currentAction;
     this.shapeInProgress;
     this.focusedShape;
-    this.maps = [];
+    this.shapes = [];
     this.isMouseDown = false;
     this.img;
 
@@ -22,7 +22,7 @@ class App {
     this.canvas.addEventListener("mousemove", e => this.mouseMove(e), false);
     this.canvas.addEventListener("mouseup", e => this.mouseUp(e), false);
 
-    this.shapes.forEach(node =>
+    this.shapeSelectors.forEach(node =>
       node.addEventListener("change", () => this.setShape(), false)
     );
     this.init();
@@ -32,7 +32,7 @@ class App {
     if (this.canvas.getContext) {
       this.clearCanvas();
       this.drawImage();
-      this.maps.forEach(r => r.draw());
+      this.shapes.forEach(r => r.draw());
       this.displayMaps(); //TEMPORARY
     }
   }
@@ -81,14 +81,14 @@ class App {
     if (del) {
       this.shapeInProgress = undefined;
       this.focusedShape = undefined;
-      this.maps = [];
+      this.shapes = [];
     }
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.drawImage();
   }
 
   setShape() {
-    const shapes = [...this.shapes];
+    const shapes = [...this.shapeSelectors];
     const selected = shapes.find(shape => shape.checked);
     selected !== undefined
       ? (this.currentDrawShape = SHAPES[selected.value.toUpperCase()])
@@ -99,7 +99,7 @@ class App {
   }
 
   determineAction(coords) {
-    const shape = this.maps.find(shape => shape.contains(coords));
+    const shape = this.shapes.find(shape => shape.contains(coords));
     if (shape) {
       if (shape.drawing) {
         return;
@@ -121,10 +121,8 @@ class App {
 
   deleteMap() {
     if (this.focusedShape) {
-      let index = this.maps.findIndex(
-        shape => shape.id === this.focusedShape.id
-      );
-      this.maps.splice(index, 1);
+      let index = this.shapes.findIndex(shape => shape.selected);
+      this.shapes.splice(index, 1);
       this.focusedShape = undefined;
       this.render();
     }
@@ -148,7 +146,7 @@ class App {
     const mapContainer = document.getElementById("maps");
     mapContainer.innerHTML = "";
     let content = "";
-    this.maps.forEach(shape => {
+    this.shapes.forEach(shape => {
       content += `
       <div class="map">
         <div>Shape: ${shape.type} |  Coords: ${JSON.stringify(
@@ -165,7 +163,7 @@ class App {
     this.loadImage();
     this.args.map.areas.forEach(area => {
       let shape = area.toShape(this.context);
-      this.maps.push(shape);
+      this.shapes.push(shape);
     });
   }
 }
