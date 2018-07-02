@@ -1,6 +1,7 @@
 import ActionDispatcher from "./actions/actionDispatcher";
 import ACTIONS from "./actions/actions";
 import Point from "./shapes/point";
+import MapArea from "./mapper/mapArea";
 import SHAPES from "./shapes/shapes";
 
 class App {
@@ -31,13 +32,8 @@ class App {
     if (this.canvas.getContext) {
       this.clearCanvas();
       this.drawImage();
-      this.maps.forEach(r => {
-        // if (!r.inUse() && !this.isMouseDown) {
-        //   console.log(r.getAreaCoords());
-        // }
-        r.draw();
-      });
-      this.displayMaps();
+      this.maps.forEach(r => r.draw());
+      this.displayMaps(); //TEMPORARY
     }
   }
 
@@ -156,7 +152,7 @@ class App {
       content += `
       <div class="map">
         <div>Shape: ${shape.type} |  Coords: ${JSON.stringify(
-        shape.getAreaCoords()
+        new MapArea(shape.type, shape.getAreaCoords(), "")
       )} Area in pixels ${shape.getArea()} | Focused: ${shape.selected}</div>
       </div>
       `;

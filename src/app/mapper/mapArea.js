@@ -15,9 +15,7 @@ class MapArea {
       case SHAPES.CIRCLE:
         return `${coords.cx},${coords.cy},${coords.r}`;
       case SHAPES.RECTANGLE:
-        return `${coords.startX},${coords.startY},${coords.endX},${
-          coords.endY
-        }`;
+        return `${coords.x},${coords.y},${coords.x + coords.w},${coords.y + coords.h}`;
       case SHAPES.POLYGON:
         return coords.map(pair => `${pair.x},${pair.y}`).join(",");
       default:
