@@ -5,13 +5,17 @@
   "scripts": {
     "start": "webpack-dev-server --config config/webpack.config.dev.js --progress --open",
     "lint": "eslint 'src/**/*.js'",
-    "build": "webpack --config config/webpack.config.prod.js --progress"
+    "build": "webpack --config config/webpack.config.prod.js --progress",
+    "test": "mocha --require babel-register --require ./test/setup.js --recursive"
   },
   "author": "",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "canvas": "^1.6.11",
+    "chai": "^4.1.2",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
     "eslint": "^3.12.2",
@@ -20,12 +24,18 @@
     "eslint-plugin-standard": "^2.0.1",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
+    "jsdom": "^11.11.0",
+    "mocha": "^5.2.0",
+    "sinon": "^6.1.0",
+    "sinon-chai": "^3.2.0",
     "style-loader": "^0.21.0",
     "uglifyjs-webpack-plugin": "^1.2.7",
     "webpack": "^4.12.1",
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4"
   },
-  "dependencies": {},
+  "dependencies": {
+    "canvas-5-polyfill": "^0.1.5"
+  },
   "license": "MIT"
 }

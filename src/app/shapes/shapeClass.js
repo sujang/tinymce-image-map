@@ -111,6 +111,11 @@ class Shape {
     return this;
   }
 
+  setHref(href) {
+    this.href = href;
+    return this;
+  }
+
   inUse() {
     return this.drawing || this.moving || this.resizing;
   }

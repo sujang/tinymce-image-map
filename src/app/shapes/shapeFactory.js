@@ -4,7 +4,7 @@ import Polygon from "./polygon";
 import SHAPES from "./shapes";
 
 const ShapeFactory = (shape, options) => {
-  const { context, drawCoords, areaCoords } = options;
+  const { context, drawCoords, areaCoords, href } = options;
   let shapeObj;
   switch (shape) {
     case SHAPES.CIRCLE:
@@ -27,6 +27,9 @@ const ShapeFactory = (shape, options) => {
       .setShapeDimensions(areaCoords)
       .calcDrawCoords()
       .finishDrawing();
+  }
+  if (href) {
+    shapeObj.setHref(href);
   }
   return shapeObj;
 };

@@ -70,12 +70,12 @@ class Circle extends Shape {
 
   calcDrawCoords() {
     this.startPoint = {
-      x: Math.round(this.dimensions.shape.cx - this.dimensions.shape.r + 2),
-      y: Math.round(this.dimensions.shape.cy - this.dimensions.shape.r + 2)
+      x: Math.round(this.dimensions.shape.cx - this.dimensions.shape.r),
+      y: Math.round(this.dimensions.shape.cy - this.dimensions.shape.r)
     };
     this.endPoint = {
-      x: Math.round(this.dimensions.shape.cx + this.dimensions.shape.r + 2),
-      y: Math.round(this.dimensions.shape.cy + this.dimensions.shape.r + 2)
+      x: Math.round(this.dimensions.shape.cx + this.dimensions.shape.r),
+      y: Math.round(this.dimensions.shape.cy + this.dimensions.shape.r)
     };
     this.moveOffSet = Object.assign({}, this.startPoint);
     this.calculateBoundingBox();

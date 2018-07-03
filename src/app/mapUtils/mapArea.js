@@ -54,7 +54,8 @@ class MapArea {
     const coords = this.formatCoordsToObjectDimensions(this.coords);
     return new ShapeFactory(this.shape, {
       areaCoords: coords,
-      context: context
+      context: context,
+      href: this.href
     });
   }
 }

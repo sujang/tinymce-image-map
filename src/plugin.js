@@ -24,9 +24,6 @@ const openDialog = editor => {
           }
         ],
         onsubmit() {
-          //TODO: Create/Update Image Maps
-          // eslint-disable-next-line no-console
-          // console.log(e);
           mapWriter(editor, map, img);
         }
       },

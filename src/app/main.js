@@ -109,13 +109,11 @@ class App {
       }
       this.focusedShape = shape;
       this.currentAction = ACTIONS.MOVE;
-      // console.log("Now we move");
     } else {
       if (this.focusedShape) {
         this.focusedShape.deselect();
       }
       this.currentAction = ACTIONS.DRAW;
-      // console.log("Now we draw");
     }
   }
 
@@ -131,6 +129,8 @@ class App {
   loadImage() {
     this.img = new Image();
     this.img.onload = () => this.drawImage();
+    this.img.height = this.args.img.height;
+    this.img.width = this.args.img.width;
     this.img.src = this.args.img.src;
   }
 
