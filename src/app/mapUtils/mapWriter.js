@@ -1,5 +1,5 @@
 const mapWriter = (editor, map, img) => {
-  const app = editor.windowManager.getWindows()[0].getContentWindow().app;
+  const app = document.app;
   let mapNode = map;
   if (!map) {
     mapNode = addMapElement(editor, img);

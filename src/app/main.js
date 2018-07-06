@@ -1,15 +1,14 @@
 import ActionDispatcher from "./actions/actionDispatcher";
 import ACTIONS from "./actions/actions";
 import Point from "./shapes/point";
-import MapArea from "./mapUtils/mapArea";
 import SHAPES from "./shapes/shapes";
 
 class App {
   constructor(args) {
     this.args = args;
-    this.canvas = document.getElementById("canvas");
+    this.canvas = args.canvas;
     this.context = this.canvas.getContext("2d");
-    this.shapeSelectors = document.getElementsByName("shapeSelect");
+    this.shapeSelectors = args.shapeSelectors;
     this.currentDrawShape;
     this.currentAction;
     this.shapeInProgress;
@@ -17,7 +16,7 @@ class App {
     this.shapes = [];
     this.isMouseDown = false;
     this.img;
-
+    console.log(args)
     this.canvas.addEventListener("mousedown", e => this.mouseDown(e), false);
     this.canvas.addEventListener("mousemove", e => this.mouseMove(e), false);
     this.canvas.addEventListener("mouseup", e => this.mouseUp(e), false);
@@ -25,6 +24,7 @@ class App {
     this.shapeSelectors.forEach(node =>
       node.addEventListener("change", () => this.setShape(), false)
     );
+
     this.init();
   }
 
@@ -33,7 +33,6 @@ class App {
       this.clearCanvas();
       this.drawImage();
       this.shapes.forEach(r => r.draw());
-      this.displayMaps(); //TEMPORARY
     }
   }
 
@@ -132,30 +131,16 @@ class App {
     this.img.height = this.args.img.height;
     this.img.width = this.args.img.width;
     this.img.src = this.args.img.src;
+    console.log(this.img);
   }
 
   drawImage() {
     const srcSize = [0, 0, this.img.width, this.img.height];
     const destSize = [0, 0, this.canvas.width, this.canvas.height];
+    // console.log(srcSize);
+    // console.log(destSize);
     this.context.imageSmoothingEnabled = false;
     this.context.drawImage(this.img, ...srcSize, ...destSize);
-  }
-
-  //TODO: Refactor or remove
-  displayMaps() {
-    const mapContainer = document.getElementById("maps");
-    mapContainer.innerHTML = "";
-    let content = "";
-    this.shapes.forEach(shape => {
-      content += `
-      <div class="map">
-        <div>Shape: ${shape.type} |  Coords: ${JSON.stringify(
-        new MapArea(shape.type, shape.getAreaCoords(), "")
-      )} Area in pixels ${shape.getArea()} | Focused: ${shape.selected}</div>
-      </div>
-      `;
-    });
-    mapContainer.innerHTML = content;
   }
 
   init() {

@@ -44,7 +44,7 @@ describe("Main application", () => {
 
   it("should load image", () => {
     window.app.img.should.exist;
-    window.app.img.src.should.equal("../static/assets/bulbs.jpeg");
+    window.app.img.src.should.equal("./static/assets/bulbs.jpeg");
     window.app.img.width.should.equal(640);
     window.app.img.height.should.equal(480);
   });
@@ -72,7 +72,7 @@ describe("Main application", () => {
 
 function init() {
   const img = document.createElement("img");
-  img.src = "../static/assets/bulbs.jpeg";
+  img.src = "./static/assets/bulbs.jpeg";
   img.height = "480";
   img.width = "640";
   img.useMap = "testmap";

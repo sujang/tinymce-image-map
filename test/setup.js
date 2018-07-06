@@ -7,7 +7,7 @@ const template = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
 </head>
-<body onload="render()">
+<body>
   <div class="container">
     <canvas id="canvas" height="400" width="600">
       <p>
@@ -37,7 +37,9 @@ const template = `<!DOCTYPE html>
 </html>
 `;
 
-const dom = new jsdom.JSDOM(template, { resources: "usable", runScripts: 'dangerously' });
+const dom = new jsdom.JSDOM(template, {
+  FetchExternalResources: ['img']
+});
 
 global.window = dom.window;
 global.document = window.document;

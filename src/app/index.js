@@ -1,5 +1,4 @@
 import App from "./main";
-import "./styles.css";
 
 const args = top.tinymce.activeEditor.windowManager.getParams();
 const app = new App(args);
