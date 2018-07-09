@@ -34,13 +34,13 @@ const openDialog = editor => {
         }
       ],
       onsubmit() {
-        mapWriter(editor, map, img);
+        mapWriter(editor, img);
         document.app = {};
+        document.getElementById('container').innerHTML = '';
       }
     });
-    // console.log(dialog);
     createDialogHtml(editor);
-    initialize(img, map, areas);
+    initialize(img, areas);
   }
 };
 
@@ -48,7 +48,7 @@ const createDialogHtml = editor => {
   const container = document.getElementById("container");
   const canvas = editor.dom.create("canvas", { id: "canvas" });
   const actions = editor.dom.create("div", { id: "actions" });
-  const template = `s
+  const template = `
   <input type="radio" name="shapeSelect" id="shape1" value="circle">
   <label for="shape1">Circle</label>
   <input type="radio" name="shapeSelect" id="shape2" value="rectangle">
@@ -66,11 +66,13 @@ const createDialogHtml = editor => {
   return container;
 };
 
-const initialize = (img, map, areas) => {
+const initialize = (img, areas) => {
+  const canvas = document.getElementById('canvas');
+  canvas.setAttribute('height', img.height);
+  canvas.setAttribute('width', img.width);
   const shapeSelectors = document.getElementsByName("shapeSelect");
-  console.log(img)
   const args = {
-    canvas: document.getElementById("canvas"),
+    canvas: canvas,
     img: {
       src: img.src,
       height: img.height,
@@ -85,7 +87,7 @@ const initialize = (img, map, areas) => {
   };
   const app = new App(args);
   document.app = app;
-  app.render();
+  app.init();
 };
 
 const plugin = editor => {

@@ -16,7 +16,6 @@ class App {
     this.shapes = [];
     this.isMouseDown = false;
     this.img;
-    console.log(args)
     this.canvas.addEventListener("mousedown", e => this.mouseDown(e), false);
     this.canvas.addEventListener("mousemove", e => this.mouseMove(e), false);
     this.canvas.addEventListener("mouseup", e => this.mouseUp(e), false);
@@ -25,7 +24,6 @@ class App {
       node.addEventListener("change", () => this.setShape(), false)
     );
 
-    this.init();
   }
 
   render() {
@@ -127,20 +125,19 @@ class App {
 
   loadImage() {
     this.img = new Image();
-    this.img.onload = () => this.drawImage();
+    this.img.onload = () => {
+      this.drawImage();
+      this.shapes.forEach(r => r.draw());
+    };
     this.img.height = this.args.img.height;
     this.img.width = this.args.img.width;
     this.img.src = this.args.img.src;
-    console.log(this.img);
   }
 
   drawImage() {
-    const srcSize = [0, 0, this.img.width, this.img.height];
     const destSize = [0, 0, this.canvas.width, this.canvas.height];
-    // console.log(srcSize);
-    // console.log(destSize);
     this.context.imageSmoothingEnabled = false;
-    this.context.drawImage(this.img, ...srcSize, ...destSize);
+    this.context.drawImage(this.img, ...destSize);
   }
 
   init() {

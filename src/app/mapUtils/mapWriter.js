@@ -1,5 +1,6 @@
-const mapWriter = (editor, map, img) => {
+const mapWriter = (editor, img) => {
   const app = document.app;
+  const map = Array.from(document.getElementsByTagName('map')).find(item => item.name === img.useMap);
   let mapNode = map;
   if (!map) {
     mapNode = addMapElement(editor, img);
