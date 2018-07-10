@@ -1,5 +1,4 @@
-import mapReader from "./app/mapUtils/mapReader";
-import mapWriter from "./app/mapUtils/mapWriter";
+import mapHelper from "./app/utils/mapHelper";
 import App from "./app/main";
 
 const openDialog = editor => {
@@ -8,7 +7,7 @@ const openDialog = editor => {
     const img = editor.selection.getNode();
     // console.log(img.height, img.width)
     const map = editor.dom.select("map").find(item => item.name === img.useMap);
-    const areas = img.useMap === "" ? [] : mapReader(Array.from(map.children));
+    const areas = img.useMap === "" ? [] : mapHelper.load(Array.from(map.children));
     editor.windowManager.open({
       title: "Manage Image Maps",
       body: [
@@ -16,13 +15,12 @@ const openDialog = editor => {
           type: "container",
           layout: "flex",
           direction: "column",
-          html: '<div id="container"></div>',
+          align: "center",
+          html: '<div id="img-map-container"></div>',
           minHeight: 700,
           minWidth: 900
         }
       ],
-      width: 900,
-      height: 700,
       buttons: [
         {
           text: "Close",
@@ -34,9 +32,9 @@ const openDialog = editor => {
         }
       ],
       onsubmit() {
-        mapWriter(editor, img);
+        mapHelper.write(editor, img);
         document.app = {};
-        document.getElementById('container').innerHTML = '';
+        document.getElementById("img-map-container").innerHTML = "";
       }
     });
     createDialogHtml(editor);
@@ -45,21 +43,43 @@ const openDialog = editor => {
 };
 
 const createDialogHtml = editor => {
-  const container = document.getElementById("container");
+  const container = document.getElementById("img-map-container");
   const canvas = editor.dom.create("canvas", { id: "canvas" });
-  const actions = editor.dom.create("div", { id: "actions" });
+  const actions = editor.dom.create("div", { id: "actions", class: "actions" });
   const template = `
-  <input type="radio" name="shapeSelect" id="shape1" value="circle">
-  <label for="shape1">Circle</label>
-  <input type="radio" name="shapeSelect" id="shape2" value="rectangle">
-  <label for="shape2">Rectangle</label>
-  <input type="radio" name="shapeSelect" id="shape3" value="polygon">
-  <label for="shape3">Polygon</label>
+  <span class="selection">
+    <input type="radio" name="shapeSelect" id="shape1" value="circle">
+    <label for="shape1">Circle</label>
+    <input type="radio" name="shapeSelect" id="shape2" value="rectangle">
+    <label for="shape2">Rectangle</label>
+    <input type="radio" name="shapeSelect" id="shape3" value="polygon">
+    <label for="shape3">Polygon</label>
+  </span>
   <span class="buttons">
     <button type="button" onclick="app.clearCanvas(true)">Clear</button>
     <button type="button" onclick="app.deleteMap()">Delete Focused</button>
   </span>
   `;
+  const styles = `
+  .img-map-container,
+  .actions {
+    padding-top: 1rem;
+  }
+  .actions {
+    display: flex;
+  }
+  #canvas {
+    display: block;
+    margin: auto;
+    border: 1px solid #AAAAAA;
+  }
+  `;
+  const styleSheet = editor.dom.create("link", {
+    type: "text/css",
+    rel: "stylesheet",
+    href: "data:text/css;charset=UTF-8," + encodeURI(styles)
+  });
+  document.getElementsByTagName("head")[0].appendChild(styleSheet);
   actions.innerHTML = template;
   container.appendChild(canvas);
   container.appendChild(actions);
@@ -67,9 +87,9 @@ const createDialogHtml = editor => {
 };
 
 const initialize = (img, areas) => {
-  const canvas = document.getElementById('canvas');
-  canvas.setAttribute('height', img.height);
-  canvas.setAttribute('width', img.width);
+  const canvas = document.getElementById("canvas");
+  canvas.setAttribute("height", img.height);
+  canvas.setAttribute("width", img.width);
   const shapeSelectors = document.getElementsByName("shapeSelect");
   const args = {
     canvas: canvas,

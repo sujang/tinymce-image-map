@@ -1,6 +1,0 @@
-import App from "./main";
-
-const args = top.tinymce.activeEditor.windowManager.getParams();
-const app = new App(args);
-window.app = app;
-window.render = () => app.render();

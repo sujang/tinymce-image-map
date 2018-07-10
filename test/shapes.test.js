@@ -1,5 +1,5 @@
 import "chai/register-should";
-import MapArea from "../src/app/mapUtils/mapArea";
+import MapArea from "../src/app/utils/mapArea";
 import Circle from "../src/app/shapes/circle";
 import Rectangle from "../src/app/shapes/rectangle";
 import Polygon from "../src/app/shapes/polygon";

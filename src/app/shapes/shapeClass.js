@@ -1,6 +1,6 @@
 /*eslint no-console: ["error", {"allow": ["warn"]}]*/
 import Point from "./point";
-import MapArea from "../mapUtils/mapArea";
+import MapArea from "../utils/mapArea";
 
 class Shape {
   constructor(context) {

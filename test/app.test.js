@@ -3,7 +3,7 @@ import sinon from "sinon";
 import sinonChai from "sinon-chai";
 import chai from "chai";
 import App from "../src/app/main";
-import mapReader from "../src/app/mapUtils/mapReader";
+import mapHelper from "../src/app/utils/mapHelper";
 
 chai.should();
 chai.use(sinonChai);
@@ -87,7 +87,7 @@ function init() {
   areaCircle.target = "_blank";
   map.appendChild(areaCircle);
 
-  const areas = mapReader(Array.from(map.children));
+  const areas = mapHelper.load(Array.from(map.children));
   const args = {
     img: {
       src: img.src,

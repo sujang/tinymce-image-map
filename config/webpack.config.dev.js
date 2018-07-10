@@ -4,8 +4,7 @@ module.exports = {
   mode: "development",
   devtool: "inline-source-map",
   entry: {
-    plugin: "./src/index.js",
-    app: "./src/app/index.js"
+    plugin: "./src/index.js"
   },
   module: {
     rules: [
@@ -31,11 +30,6 @@ module.exports = {
       inject: true,
       filename: "index.html",
       template: "./static/index.html"
-    }),
-    new HtmlWebpackPlugin({
-      filename: "plugin.html",
-      chunks: ["app"],
-      template: "./src/app/index.html"
     })
   ]
 };
