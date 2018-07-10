@@ -1,13 +1,9 @@
-import mapHelper from "./app/utils/mapHelper";
-import App from "./app/main";
+import view from "./app/utils/view";
 
 const openDialog = editor => {
   let isImg = editor.selection.getNode().nodeName === "IMG";
   if (isImg) {
     const img = editor.selection.getNode();
-    // console.log(img.height, img.width)
-    const map = editor.dom.select("map").find(item => item.name === img.useMap);
-    const areas = img.useMap === "" ? [] : mapHelper.load(Array.from(map.children));
     editor.windowManager.open({
       title: "Manage Image Maps",
       body: [
@@ -32,82 +28,11 @@ const openDialog = editor => {
         }
       ],
       onsubmit() {
-        mapHelper.write(editor, img);
-        document.app = {};
-        document.getElementById("img-map-container").innerHTML = "";
+        view.destroy(editor, img);
       }
     });
-    createDialogHtml(editor);
-    initialize(img, areas);
+    view.createDialogHtml(editor).then(() => view.initApp(editor, img));
   }
-};
-
-const createDialogHtml = editor => {
-  const container = document.getElementById("img-map-container");
-  const canvas = editor.dom.create("canvas", { id: "canvas" });
-  const actions = editor.dom.create("div", { id: "actions", class: "actions" });
-  const template = `
-  <span class="selection">
-    <input type="radio" name="shapeSelect" id="shape1" value="circle">
-    <label for="shape1">Circle</label>
-    <input type="radio" name="shapeSelect" id="shape2" value="rectangle">
-    <label for="shape2">Rectangle</label>
-    <input type="radio" name="shapeSelect" id="shape3" value="polygon">
-    <label for="shape3">Polygon</label>
-  </span>
-  <span class="buttons">
-    <button type="button" onclick="app.clearCanvas(true)">Clear</button>
-    <button type="button" onclick="app.deleteMap()">Delete Focused</button>
-  </span>
-  `;
-  const styles = `
-  .img-map-container,
-  .actions {
-    padding-top: 1rem;
-  }
-  .actions {
-    display: flex;
-  }
-  #canvas {
-    display: block;
-    margin: auto;
-    border: 1px solid #AAAAAA;
-  }
-  `;
-  const styleSheet = editor.dom.create("link", {
-    type: "text/css",
-    rel: "stylesheet",
-    href: "data:text/css;charset=UTF-8," + encodeURI(styles)
-  });
-  document.getElementsByTagName("head")[0].appendChild(styleSheet);
-  actions.innerHTML = template;
-  container.appendChild(canvas);
-  container.appendChild(actions);
-  return container;
-};
-
-const initialize = (img, areas) => {
-  const canvas = document.getElementById("canvas");
-  canvas.setAttribute("height", img.height);
-  canvas.setAttribute("width", img.width);
-  const shapeSelectors = document.getElementsByName("shapeSelect");
-  const args = {
-    canvas: canvas,
-    img: {
-      src: img.src,
-      height: img.height,
-      width: img.width,
-      useMap: img.useMap
-    },
-    map: {
-      name: img.useMap,
-      areas: areas
-    },
-    shapeSelectors: shapeSelectors
-  };
-  const app = new App(args);
-  document.app = app;
-  app.init();
 };
 
 const plugin = editor => {
@@ -118,7 +43,7 @@ const plugin = editor => {
   });
 
   editor.addMenuItem("tinymceImageMap", {
-    text: "Image Maps",
+    text: "Image Map",
     onclick: () => openDialog(editor)
   });
 
