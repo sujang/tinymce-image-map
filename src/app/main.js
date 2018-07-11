@@ -16,14 +16,16 @@ class App {
     this.shapes = [];
     this.isMouseDown = false;
     this.img;
+    this.urlInput = args.urlInput;
     this.canvas.addEventListener("mousedown", e => this.mouseDown(e), false);
     this.canvas.addEventListener("mousemove", e => this.mouseMove(e), false);
     this.canvas.addEventListener("mouseup", e => this.mouseUp(e), false);
-
+    this.urlInput.addEventListener("change", e =>
+      this.focusedShape.setHref(e.target.value)
+    );
     this.shapeSelectors.forEach(node =>
       node.addEventListener("change", () => this.setShape(), false)
     );
-
   }
 
   render() {
@@ -101,16 +103,29 @@ class App {
       if (shape.drawing) {
         return;
       }
-      if (this.focusedShape) {
-        this.focusedShape.deselect();
-      }
-      this.focusedShape = shape;
+      this.setFocusedShape(shape);
       this.currentAction = ACTIONS.MOVE;
     } else {
-      if (this.focusedShape) {
-        this.focusedShape.deselect();
-      }
+      this.setFocusedShape();
       this.currentAction = ACTIONS.DRAW;
+    }
+  }
+
+  setFocusedShape(shape) {
+    if (shape) {
+      this.removeFocusedShape();
+      this.focusedShape = shape;
+      this.urlInput.value = this.focusedShape.href;
+    } else {
+      this.removeFocusedShape();
+      this.urlInput.value = "";
+    }
+  }
+
+  removeFocusedShape() {
+    if (this.focusedShape) {
+      this.urlInput.blur();
+      this.focusedShape.deselect();
     }
   }
 

@@ -8,6 +8,7 @@ class MapArea {
     this.coords =
       typeof coords === "string" ? coords : this.formatCoordsToString(coords);
     this.href = href;
+    this.target = '_blank';
   }
 
   formatCoordsToString(coords) {

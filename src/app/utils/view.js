@@ -21,7 +21,7 @@ const actionsTemplate = () => {
 const inputs = () => {
   return `
     <label for="url" class="mce-widget mce-label">enter valid link URL</label>
-    <input type="url" id="url" name="url" class="mce-textbox" required/>
+    <input type="url" id="map-url-input" name="map-url-input" class="mce-textbox" required/>
   `;
 };
 
@@ -79,6 +79,7 @@ const view = {
     const canvas = document.getElementById("canvas");
     canvas.setAttribute("height", img.height);
     canvas.setAttribute("width", img.width);
+    const urlInput = document.getElementById('map-url-input');
     const shapeSelectors = document.getElementsByName("shapeSelect");
     const args = {
       canvas: canvas,
@@ -92,7 +93,8 @@ const view = {
         name: img.useMap,
         areas: areas
       },
-      shapeSelectors: shapeSelectors
+      shapeSelectors: shapeSelectors,
+      urlInput: urlInput
     };
     const app = new App(args);
     document.app = app;
@@ -100,6 +102,8 @@ const view = {
   },
 
   destroy: (editor, img) => {
+    console.log(document.app.shapes);
+    document.getElementById('map-url-input').blur();
     mapHelper.write(editor, img);
     document.app = {};
     document.getElementById("img-map-container").innerHTML = "";

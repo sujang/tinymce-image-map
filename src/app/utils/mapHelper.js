@@ -12,6 +12,7 @@ const mapHelper = {
     clearAreas(map);
     app.shapes.forEach(shape => {
       let area = shape.toMapArea();
+      console.log(area);
       let node = Object.assign(editor.dom.create("area"), area);
       map.append(node);
     });
