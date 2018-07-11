@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "tinymceImageMap TinyMCE plugin repo",
   "scripts": {
-    "start": "webpack-dev-server --config config/webpack.config.dev.js --progress --open",
+    "start": "webpack-dev-server --config config/webpack.config.dev.js --progress --open --hot",
     "lint": "eslint 'src/**/*.js'",
     "build": "webpack --config config/webpack.config.prod.js --progress",
     "test": "mocha --require babel-register --require ./test/setup.js --recursive --reporter nyan"

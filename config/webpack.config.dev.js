@@ -6,6 +6,7 @@ module.exports = {
   entry: {
     plugin: "./src/index.js"
   },
+  devServer: { hot: true },
   module: {
     rules: [
       {

@@ -1,5 +1,6 @@
 import mapHelper from "./mapHelper";
 import App from "../main";
+import "./styles.css";
 
 const actionsTemplate = () => {
   return `
@@ -25,47 +26,19 @@ const inputs = () => {
   `;
 };
 
-const styleSheetLink = () => {
-  const styles = `
-    .img-map-container,
-    .actions {
-      padding-top: 1rem;
-    }
-    .actions {
-      display: flex;
-    }
-    #canvas {
-      display: block;
-      margin: auto;
-      border: 1px solid #AAAAAA;
-    }
-  `;
-  return "data:text/css;charset=UTF-8," + encodeURI(styles);
-};
-
 const view = {
   createDialogHtml: editor => {
     return new Promise(resolve => {
       const container = document.getElementById("img-map-container");
       //Add canvas
-      const canvas = editor.dom.create("canvas", { id: "canvas" });
+      const canvas = editor.dom.create("canvas", { id: "img-map-canvas" });
       container.appendChild(canvas);
       //Add actions
-      const actions = editor.dom.create("div", {
-        id: "actions",
-        class: "actions"
-      });
+      const actions = editor.dom.create("div", { id: "img-map-actions" });
       actions.innerHTML = actionsTemplate();
       container.appendChild(actions);
-      //Add styles
-      const styleSheet = editor.dom.create("link", {
-        type: "text/css",
-        rel: "stylesheet",
-        href: styleSheetLink()
-      });
-      document.getElementsByTagName("head")[0].appendChild(styleSheet);
       // Add inputs
-      const form = editor.dom.create('form', { id: 'img-map-form' });
+      const form = editor.dom.create("form", { id: "img-map-form" });
       form.innerHTML = inputs();
       container.appendChild(form);
       resolve(container);
@@ -76,10 +49,10 @@ const view = {
     const map = editor.dom.select("map").find(item => item.name === img.useMap);
     const areas =
       img.useMap === "" ? [] : mapHelper.load(Array.from(map.children));
-    const canvas = document.getElementById("canvas");
+    const canvas = document.getElementById("img-map-canvas");
     canvas.setAttribute("height", img.height);
     canvas.setAttribute("width", img.width);
-    const urlInput = document.getElementById('map-url-input');
+    const urlInput = document.getElementById("map-url-input");
     const shapeSelectors = document.getElementsByName("shapeSelect");
     const args = {
       canvas: canvas,
@@ -102,8 +75,7 @@ const view = {
   },
 
   destroy: (editor, img) => {
-    console.log(document.app.shapes);
-    document.getElementById('map-url-input').blur();
+    document.getElementById("map-url-input").blur();
     mapHelper.write(editor, img);
     document.app = {};
     document.getElementById("img-map-container").innerHTML = "";

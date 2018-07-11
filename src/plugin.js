@@ -13,17 +13,13 @@ const openDialog = editor => {
           direction: "column",
           align: "center",
           html: '<div id="img-map-container"></div>',
-          minHeight: 700,
-          minWidth: 900
+          minHeight: img.height + 100,
+          minWidth: img.width
         }
       ],
       buttons: [
         {
-          text: "Close",
-          onclick: "close"
-        },
-        {
-          text: "Save",
+          text: "Done",
           onclick: "submit"
         }
       ],
@@ -36,9 +32,11 @@ const openDialog = editor => {
 };
 
 const plugin = editor => {
+  // TODO: REMOVE THIS! FOR TESTING PURPOSES ONLY
   editor.on("init", () => {
     if (editor.selection.getNode().nodeName !== "IMG") {
       editor.selection.select(editor.dom.select("img")[0]);
+      openDialog(editor)
     }
   });
 

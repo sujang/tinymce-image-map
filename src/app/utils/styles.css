@@ -1,0 +1,20 @@
+#img-map-container {
+  display: flex;
+  flex-direction: column;
+}
+
+#img-map-canvas {
+  border: 1px solid #AAAAAA;
+}
+
+#img-map-actions, #img-map-form{
+  display: flex;
+  padding: .5rem .25rem;
+}
+
+#img-map-actions{
+  justify-content: space-between;
+}
+
+
+
