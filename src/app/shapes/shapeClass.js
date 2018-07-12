@@ -16,7 +16,7 @@ class Shape {
     this.resizing = false;
     this.path = new Path2D();
     this.strokeStyle = "#000";
-    this.href;
+    this.href = "";
   }
 
   //ABSTRACT METHODS

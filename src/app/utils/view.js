@@ -4,25 +4,31 @@ import "./styles.css";
 
 const actionsTemplate = () => {
   return `
-    <span class="selection">
-      <input type="radio" name="shapeSelect" id="shape1" value="circle">
-      <label for="shape1">Circle</label>
-      <input type="radio" name="shapeSelect" id="shape2" value="rectangle">
-      <label for="shape2">Rectangle</label>
-      <input type="radio" name="shapeSelect" id="shape3" value="polygon">
-      <label for="shape3">Polygon</label>
+    <span class="img-map-selection">
+      <span class="img-map-shape-select">
+        <input type="radio" name="shapeSelect" id="shape1" value="circle">
+        <label for="shape1">Circle</label>
+      </span>
+      <span class="img-map-shape-select">
+        <input type="radio" name="shapeSelect" id="shape2" value="rectangle">
+        <label for="shape2">Rectangle</label>
+      </span>
+      <span class="img-map-shape-select">
+        <input type="radio" name="shapeSelect" id="shape3" value="polygon">
+        <label for="shape3">Polygon</label>
+      </span>
     </span>
-    <span class="buttons">
-      <button type="button" class="mce-btn" onclick="app.clearCanvas(true)">Clear</button>
-      <button type="button" class="mce-btn" onclick="app.deleteMap()">Delete Focused</button>
+    <span class="img-map-buttons">
+      <button type="button" class="img-map-btn" onclick="app.clearCanvas(true)">Clear</button>
+      <button type="button" class="img-map-btn" onclick="app.deleteMap()">Delete Focused</button>
     </span>
   `;
 };
 
 const inputs = () => {
   return `
-    <label for="url" class="mce-widget mce-label">enter valid link URL</label>
-    <input type="url" id="map-url-input" name="map-url-input" class="mce-textbox" required/>
+    <label for="url">URL: </label>
+    <input type="url" id="map-url-input" name="map-url-input" class="img-map-url-input" placeholder="https://www.validurl.com" required/>
   `;
 };
 
