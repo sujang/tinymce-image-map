@@ -32,14 +32,6 @@ const openDialog = editor => {
 };
 
 const plugin = editor => {
-  // TODO: REMOVE THIS! FOR TESTING PURPOSES ONLY
-  editor.on("init", () => {
-    if (editor.selection.getNode().nodeName !== "IMG") {
-      editor.selection.select(editor.dom.select("img")[0]);
-      openDialog(editor)
-    }
-  });
-
   editor.addMenuItem("tinymceImageMap", {
     text: "Image Map",
     onclick: () => openDialog(editor)

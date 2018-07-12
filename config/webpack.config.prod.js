@@ -14,12 +14,25 @@ module.exports = {
     path: path.join(__dirname, "../dist", pluginName),
     filename: "[name].js"
   },
+  target: "web",
+  node: {
+    fs: "empty"
+  },
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: "babel-loader"
+      },
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }]
+      },
+      {
+        test: /\.(jpg|jpeg|png|gif|svg)/,
+        use: { loader: "file-loader" }
       }
     ]
   },
@@ -33,7 +46,7 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin([
       {
-        from: path.join(__dirname, "../src/LICENSE"),
+        from: path.join(__dirname, "../LICENSE"),
         to: path.join(__dirname, "../dist", pluginName)
       }
     ])

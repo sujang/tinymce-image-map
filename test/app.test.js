@@ -28,8 +28,8 @@ describe("Main application", () => {
 
   it("should have a configured canvas and context", () => {
     window.app.canvas.should.exist;
-    window.app.canvas.height.should.equal(400);
-    window.app.canvas.width.should.equal(600);
+    window.app.canvas.height.should.equal(480);
+    window.app.canvas.width.should.equal(640);
     window.app.context.should.exist;
     window.app.context.canvas.should.deep.equal(window.app.canvas);
   });
@@ -77,6 +77,10 @@ function init() {
   img.width = "640";
   img.useMap = "testmap";
 
+  const canvas = document.createElement('canvas');
+  canvas.height = img.height;
+  canvas.width = img.width;
+
   const map = document.createElement("map");
   map.name = "testmap";
 
@@ -86,6 +90,16 @@ function init() {
   areaCircle.coords = "50,50,45";
   areaCircle.target = "_blank";
   map.appendChild(areaCircle);
+
+  const shapeSelect = document.createElement('input');
+  shapeSelect.type = 'radio';
+  shapeSelect.name = 'shapeSelect';
+  shapeSelect.id = 'shape1';
+  shapeSelect.value = 'circle';
+
+  const urlInput = document.createElement('input');
+  urlInput.type = 'url';
+  urlInput.name = 'map-url-input';
 
   const areas = mapHelper.load(Array.from(map.children));
   const args = {
@@ -98,7 +112,10 @@ function init() {
     map: {
       name: img.useMap,
       areas: areas
-    }
+    },
+    canvas: canvas,
+    shapeSelectors: [shapeSelect],
+    urlInput: urlInput
   };
 
   sinon.spy(App.prototype, "drawImage");
@@ -107,5 +124,5 @@ function init() {
 
   const app = new App(args);
   window.app = app;
-  window.render = () => app.render();
+  app.init();
 }
