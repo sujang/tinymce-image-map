@@ -8,15 +8,16 @@ module.exports = {
   mode: "production",
   entry: {
     plugin: "./src/index.js",
-    "plugin.min": "./src/index.js"
+    "plugin.min": "./src/index.js",
+    polyfills: "./src/polyfills.js"
   },
   output: {
     path: path.join(__dirname, "../dist", pluginName),
     filename: "[name].js"
   },
   target: "web",
-  node: {
-    fs: "empty"
+  externals: {
+    canvas: 'canvas'
   },
   module: {
     rules: [

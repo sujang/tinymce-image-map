@@ -4,9 +4,15 @@ module.exports = {
   mode: "development",
   devtool: "inline-source-map",
   entry: {
-    plugin: "./src/index.js"
+    plugin: "./src/index.js",
+    polyfills: "./src/polyfills.js"
   },
-  devServer: { hot: true },
+  devServer: {
+    hot: true
+  },
+  externals: {
+    canvas: "canvas"
+  },
   module: {
     rules: [
       {
