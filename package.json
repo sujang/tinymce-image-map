@@ -15,6 +15,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "canvas": "^1.6.11",
+    "canvas-5-polyfill": "^0.1.5",
     "chai": "^4.1.2",
     "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
@@ -34,8 +35,6 @@
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.4"
   },
-  "dependencies": {
-    "canvas-5-polyfill": "^0.1.5"
-  },
+  "dependencies": {},
   "license": "MIT"
 }
