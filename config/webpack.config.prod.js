@@ -8,8 +8,7 @@ module.exports = {
   mode: "production",
   entry: {
     plugin: "./src/index.js",
-    "plugin.min": "./src/index.js",
-    polyfills: "./src/polyfills.js"
+    "plugin.min": "./src/index.js"
   },
   output: {
     path: path.join(__dirname, "../dist", pluginName),

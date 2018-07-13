@@ -4,8 +4,7 @@ module.exports = {
   mode: "development",
   devtool: "inline-source-map",
   entry: {
-    plugin: "./src/index.js",
-    polyfills: "./src/polyfills.js"
+    plugin: "./src/index.js"
   },
   devServer: {
     hot: true
