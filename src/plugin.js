@@ -33,13 +33,14 @@ const openDialog = editor => {
 
 const plugin = editor => {
   editor.addMenuItem("tinymceImageMap", {
+    icon: 'img-map-icon',
     text: "Image Map",
     onclick: () => openDialog(editor)
   });
 
   editor.addButton("tinymceImageMap", {
-    text: "Image Map",
-    icon: false,
+    tooltip: 'Image Map',
+    icon: 'img-map-icon',
     onclick: () => openDialog(editor)
   });
 };

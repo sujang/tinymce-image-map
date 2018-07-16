@@ -40,6 +40,15 @@
   border: 1px solid #b3b3b3;
 }
 
+i.mce-i-img-map-icon,
+i.mce-ico.mce-i-img-map-icon{
+  background-image: url('../map.png');
+  max-height: 16px;
+  max-width: 16px;
+  margin-right: 4px;
+  padding-right: 0;
+}
+
 ::placeholder {
   color: #c3c3c3;
 }
