@@ -24,13 +24,12 @@ module.exports = {
         exclude: /node_modules/,
         use: [{ loader: "style-loader" }, { loader: "css-loader" }]
       },
-
       {
         test: /\.(jpg|jpeg|png|gif|svg)/,
         use: {
-          loader: "file-loader",
+          loader: "url-loader",
           options: {
-            name: "[name].[ext]"
+            limit: 1000
           }
         }
       },

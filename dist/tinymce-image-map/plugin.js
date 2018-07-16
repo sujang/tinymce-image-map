@@ -957,9 +957,9 @@ function updateLink (link, options, obj) {
 
 /***/ }),
 /* 7 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-module.exports = __webpack_require__.p + "mapIcon.png";
+module.exports = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA1UlEQVQ4je3TsU3DQBjF8Z+TnpYd8ARBFKGmzQihZgeKbBGlZQEUWAKBUGaI0jEAylHcXbicjb0AT7J89ve+v+7s99HVJR4x6amVusBN+WKKe4R0fWLRA6p94BYf+MY2FZ5wrEClb58B67R4wVUyZ3JbgMJfvoANmtRUAhSggFXty+d77mkqtUv3t9o39qVH9Q/oAhpcp3U70NfgLj8E8Z+2ePUbmKMYonbAt86FgxjPd8zTzhZijDMop7D0ncgBS3FQ6iNmUMBXn28mjuaQJngQR/1MPxY7QVXZdBOHAAAAAElFTkSuQmCC"
 
 /***/ }),
 /* 8 */
