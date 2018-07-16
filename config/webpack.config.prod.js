@@ -16,7 +16,7 @@ module.exports = {
   },
   target: "web",
   externals: {
-    canvas: 'canvas'
+    canvas: "canvas"
   },
   module: {
     rules: [
@@ -33,6 +33,11 @@ module.exports = {
       {
         test: /\.(jpg|jpeg|png|gif|svg)/,
         use: { loader: "file-loader" }
+      },
+      {
+        test: /\.html$/,
+        exclude: /(node_modules|static)/,
+        use: { loader: "html-loader" }
       }
     ]
   },

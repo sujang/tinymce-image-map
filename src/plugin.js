@@ -27,7 +27,7 @@ const openDialog = editor => {
         view.destroy(editor, img);
       }
     });
-    view.createDialogHtml(editor).then(() => view.initApp(editor, img));
+    view.createDialogHtml().then(() => view.initApp(editor, img));
   }
 };
 

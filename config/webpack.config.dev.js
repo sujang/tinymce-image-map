@@ -24,9 +24,15 @@ module.exports = {
         exclude: /node_modules/,
         use: [{ loader: "style-loader" }, { loader: "css-loader" }]
       },
+
       {
         test: /\.(jpg|jpeg|png|gif|svg)/,
         use: { loader: "file-loader" }
+      },
+      {
+        test: /\.html$/,
+        exclude: /(node_modules|static)/,
+        use: { loader: "html-loader" }
       }
     ]
   },
