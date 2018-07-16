@@ -959,7 +959,7 @@ function updateLink (link, options, obj) {
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZmlsbD0ibm9uZSIgaGVpZ2h0PSIyNCIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBvbHlnb24gcG9pbnRzPSIxIDYgMSAyMiA4IDE4IDE2IDIyIDIzIDE4IDIzIDIgMTYgNiA4IDIgMSA2Ii8+PGxpbmUgeDE9IjgiIHgyPSI4IiB5MT0iMiIgeTI9IjE4Ii8+PGxpbmUgeDE9IjE2IiB4Mj0iMTYiIHkxPSI2IiB5Mj0iMjIiLz48L3N2Zz4="
+module.exports = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZmlsbD0ibm9uZSIgaGVpZ2h0PSIyNCIgc3Ryb2tlPSIjNTk1OTU5IiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBvbHlnb24gcG9pbnRzPSIxIDYgMSAyMiA4IDE4IDE2IDIyIDIzIDE4IDIzIDIgMTYgNiA4IDIgMSA2Ii8+PGxpbmUgeDE9IjgiIHgyPSI4IiB5MT0iMiIgeTI9IjE4Ii8+PGxpbmUgeDE9IjE2IiB4Mj0iMTYiIHkxPSI2IiB5Mj0iMjIiLz48L3N2Zz4="
 
 /***/ }),
 /* 8 */
@@ -1075,7 +1075,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, "#img-map-container {\n  display: flex;\n  flex-direction: column;\n}\n\n#img-map-canvas {\n  border: 1px solid #AAAAAA;\n}\n\n#img-map-actions, #img-map-form, #img-map-hint {\n  display: flex;\n  align-items: center;\n  padding: 8px .0 .0 3px;\n  height: auto;\n  line-height: 20px;\n}\n\n#img-map-actions {\n  justify-content: space-between;\n}\n\n#img-map-actions .img-map-btn {\n  height: 28px;\n  border: 1px solid #b3b3b3;\n  text-shadow: 0 1px 1px rgba(255,255,255,0.75);\n  padding: 4px 6px;\n  cursor: pointer;\n  /* background-color: aquamarine; */\n  box-sizing: border-box;\n}\n\n#img-map-actions .img-map-shape-select {\n  padding-right: .8px;\n}\n\n#img-map-form .img-map-url-input{\n  width: 100%;\n  margin-left: 16px;\n  padding: 5px 6px;\n  border: 1px solid #b3b3b3;\n}\n\ni.mce-i-img-map-icon,\ni.mce-ico.mce-i-img-map-icon{\n  background-image: url(" + escape(__webpack_require__(7)) + ");\n  max-height: 16px;\n  max-width: 16px;\n  margin-right: 4px;\n  padding-right: 0;\n  color: #595959;\n}\n\n::placeholder {\n  color: #c3c3c3;\n}\n\n#img-map-hint {\n  visibility: hidden;\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, "#img-map-container {\n  display: flex;\n  flex-direction: column;\n}\n\n#img-map-canvas {\n  border: 1px solid #AAAAAA;\n}\n\n#img-map-actions, #img-map-form, #img-map-hint {\n  display: flex;\n  align-items: center;\n  padding: 8px .0 .0 3px;\n  height: auto;\n  line-height: 20px;\n}\n\n#img-map-actions {\n  justify-content: space-between;\n}\n\n#img-map-actions .img-map-btn {\n  height: 28px;\n  border: 1px solid #b3b3b3;\n  text-shadow: 0 1px 1px rgba(255,255,255,0.75);\n  padding: 4px 6px;\n  cursor: pointer;\n  /* background-color: aquamarine; */\n  box-sizing: border-box;\n}\n\n#img-map-actions .img-map-shape-select {\n  padding-right: .8px;\n}\n\n#img-map-form .img-map-url-input{\n  width: 100%;\n  margin-left: 16px;\n  padding: 5px 6px;\n  border: 1px solid #b3b3b3;\n}\n\ni.mce-i-img-map-icon,\ni.mce-ico.mce-i-img-map-icon{\n  background-image: url(" + escape(__webpack_require__(7)) + ");\n  max-height: 16px;\n  max-width: 16px;\n  margin-right: 4px;\n  padding-right: 0;\n}\n\n::placeholder {\n  color: #c3c3c3;\n}\n\n#img-map-hint {\n  visibility: hidden;\n  font-weight: bold;\n}", ""]);
 
 // exports
 
