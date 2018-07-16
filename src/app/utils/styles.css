@@ -7,7 +7,7 @@
   border: 1px solid #AAAAAA;
 }
 
-#img-map-actions, #img-map-form {
+#img-map-actions, #img-map-form, #img-map-hint {
   display: flex;
   align-items: center;
   padding: 8px .0 .0 3px;
@@ -51,4 +51,9 @@ i.mce-ico.mce-i-img-map-icon{
 
 ::placeholder {
   color: #c3c3c3;
+}
+
+#img-map-hint {
+  visibility: hidden;
+  font-weight: bold;
 }

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 22);
+/******/ 	return __webpack_require__(__webpack_require__.s = 25);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -322,15 +322,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _circle = __webpack_require__(18);
+var _circle = __webpack_require__(21);
 
 var _circle2 = _interopRequireDefault(_circle);
 
-var _rectangle = __webpack_require__(17);
+var _rectangle = __webpack_require__(20);
 
 var _rectangle2 = _interopRequireDefault(_rectangle);
 
-var _polygon = __webpack_require__(16);
+var _polygon = __webpack_require__(19);
 
 var _polygon2 = _interopRequireDefault(_polygon);
 
@@ -957,6 +957,12 @@ function updateLink (link, options, obj) {
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "35622a02d9e23124f3a901ffb12f4482.png";
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports) {
 
 /*
@@ -1038,25 +1044,48 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 8 */
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = function escape(url) {
+    if (typeof url !== 'string') {
+        return url
+    }
+    // If url is already wrapped in quotes, remove them
+    if (/^['"].*['"]$/.test(url)) {
+        url = url.slice(1, -1);
+    }
+    // Should url be wrapped?
+    // See https://drafts.csswg.org/css-values-3/#urls
+    if (/["'() \t\n]/.test(url)) {
+        return '"' + url.replace(/"/g, '\\"').replace(/\n/g, '\\n') + '"'
+    }
+
+    return url
+}
+
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(7)(false);
+var escape = __webpack_require__(9);
+exports = module.exports = __webpack_require__(8)(false);
 // imports
 
 
 // module
-exports.push([module.i, "#img-map-container {\n  display: flex;\n  flex-direction: column;\n}\n\n#img-map-canvas {\n  border: 1px solid #AAAAAA;\n}\n\n#img-map-actions, #img-map-form {\n  display: flex;\n  align-items: center;\n  padding: 8px .0 .0 3px;\n  height: auto;\n  line-height: 20px;\n}\n\n#img-map-actions {\n  justify-content: space-between;\n}\n\n#img-map-actions .img-map-btn {\n  height: 28px;\n  border: 1px solid #b3b3b3;\n  text-shadow: 0 1px 1px rgba(255,255,255,0.75);\n  padding: 4px 6px;\n  cursor: pointer;\n  /* background-color: aquamarine; */\n  box-sizing: border-box;\n}\n\n#img-map-actions .img-map-shape-select {\n  padding-right: .8px;\n}\n\n#img-map-form .img-map-url-input{\n  width: 100%;\n  margin-left: 16px;\n  padding: 5px 6px;\n  border: 1px solid #b3b3b3;\n}\n\n::placeholder {\n  color: #c3c3c3;\n}", ""]);
+exports.push([module.i, "#img-map-container {\n  display: flex;\n  flex-direction: column;\n}\n\n#img-map-canvas {\n  border: 1px solid #AAAAAA;\n}\n\n#img-map-actions, #img-map-form, #img-map-hint {\n  display: flex;\n  align-items: center;\n  padding: 8px .0 .0 3px;\n  height: auto;\n  line-height: 20px;\n}\n\n#img-map-actions {\n  justify-content: space-between;\n}\n\n#img-map-actions .img-map-btn {\n  height: 28px;\n  border: 1px solid #b3b3b3;\n  text-shadow: 0 1px 1px rgba(255,255,255,0.75);\n  padding: 4px 6px;\n  cursor: pointer;\n  /* background-color: aquamarine; */\n  box-sizing: border-box;\n}\n\n#img-map-actions .img-map-shape-select {\n  padding-right: .8px;\n}\n\n#img-map-form .img-map-url-input{\n  width: 100%;\n  margin-left: 16px;\n  padding: 5px 6px;\n  border: 1px solid #b3b3b3;\n}\n\ni.mce-i-img-map-icon,\ni.mce-ico.mce-i-img-map-icon{\n  background-image: url(" + escape(__webpack_require__(7)) + ");\n  max-height: 16px;\n  max-width: 16px;\n  margin-right: 4px;\n  padding-right: 0;\n}\n\n::placeholder {\n  color: #c3c3c3;\n}\n\n#img-map-hint {\n  visibility: hidden;\n  font-weight: bold;\n}", ""]);
 
 // exports
 
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(8);
+var content = __webpack_require__(10);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -1077,7 +1106,13 @@ if(content.locals) module.exports = content.locals;
 if(false) {}
 
 /***/ }),
-/* 10 */
+/* 12 */
+/***/ (function(module, exports) {
+
+module.exports = "<canvas id=\"img-map-canvas\">\n  Please upgrade your browser to display this image.\n</canvas>\n<div id=\"img-map-actions\">\n  <span class=\"img-map-selection\">\n    <span class=\"img-map-shape-select\">\n      <input type=\"radio\" name=\"shapeSelect\" id=\"shape1\" value=\"circle\">\n      <label for=\"shape1\">Circle</label>\n    </span>\n    <span class=\"img-map-shape-select\">\n      <input type=\"radio\" name=\"shapeSelect\" id=\"shape2\" value=\"rectangle\">\n      <label for=\"shape2\">Rectangle</label>\n    </span>\n    <span class=\"img-map-shape-select\">\n      <input type=\"radio\" name=\"shapeSelect\" id=\"shape3\" value=\"polygon\">\n      <label for=\"shape3\">Polygon</label>\n    </span>\n  </span>\n  <span class=\"img-map-buttons\">\n    <button type=\"button\" class=\"img-map-btn\" onclick=\"app.clearCanvas(true)\">Clear</button>\n    <button type=\"button\" class=\"img-map-btn\" onclick=\"app.deleteMap()\">Delete Focused</button>\n  </span>\n</div>\n<form id=\"img-map-form\">\n  <label for=\"url\">URL: </label>\n  <input type=\"url\" id=\"map-url-input\" name=\"map-url-input\" class=\"img-map-url-input\" placeholder=\"https://www.validurl.com\"\n    required/>\n</form>\n<div id=\"img-map-hint\">Hold Shift and left click to finish drawing the polygon</div>";
+
+/***/ }),
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1095,7 +1130,7 @@ var ACTIONS = Object.freeze({
 exports.default = ACTIONS;
 
 /***/ }),
-/* 11 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1120,7 +1155,7 @@ var resize = {
 exports.default = resize;
 
 /***/ }),
-/* 12 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1144,7 +1179,7 @@ var move = {
 exports.default = move;
 
 /***/ }),
-/* 13 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1206,7 +1241,7 @@ function removeInvalidShape(shape) {
 exports.default = draw;
 
 /***/ }),
-/* 14 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1216,15 +1251,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _draw = __webpack_require__(13);
+var _draw = __webpack_require__(16);
 
 var _draw2 = _interopRequireDefault(_draw);
 
-var _move = __webpack_require__(12);
+var _move = __webpack_require__(15);
 
 var _move2 = _interopRequireDefault(_move);
 
-var _resize = __webpack_require__(11);
+var _resize = __webpack_require__(14);
 
 var _resize2 = _interopRequireDefault(_resize);
 
@@ -1239,7 +1274,7 @@ var ActionDispatcher = {
 exports.default = ActionDispatcher;
 
 /***/ }),
-/* 15 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1251,11 +1286,11 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _actionDispatcher = __webpack_require__(14);
+var _actionDispatcher = __webpack_require__(17);
 
 var _actionDispatcher2 = _interopRequireDefault(_actionDispatcher);
 
-var _actions = __webpack_require__(10);
+var _actions = __webpack_require__(13);
 
 var _actions2 = _interopRequireDefault(_actions);
 
@@ -1291,6 +1326,7 @@ var App = function () {
     this.isMouseDown = false;
     this.img;
     this.urlInput = args.urlInput;
+    this.hint = args.hint;
     this.canvas.addEventListener("mousedown", function (e) {
       return _this.mouseDown(e);
     }, false);
@@ -1319,6 +1355,7 @@ var App = function () {
         this.shapes.forEach(function (r) {
           return r.draw();
         });
+        this.showHint();
       }
     }
   }, {
@@ -1462,6 +1499,15 @@ var App = function () {
       (_context = this.context).drawImage.apply(_context, [this.img].concat(destSize));
     }
   }, {
+    key: "showHint",
+    value: function showHint() {
+      if (this.shapeInProgress && this.shapeInProgress.type === "polygon" && this.shapeInProgress.drawing) {
+        this.hint.style.visibility = "visible";
+      } else {
+        this.hint.style.visibility = "hidden";
+      }
+    }
+  }, {
     key: "init",
     value: function init() {
       var _this3 = this;
@@ -1481,7 +1527,7 @@ var App = function () {
 exports.default = App;
 
 /***/ }),
-/* 16 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1608,7 +1654,7 @@ var Polygon = function (_Shape) {
 exports.default = Polygon;
 
 /***/ }),
-/* 17 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1708,7 +1754,7 @@ var Rectangle = function (_Shape) {
 exports.default = Rectangle;
 
 /***/ }),
-/* 18 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1847,7 +1893,7 @@ var Circle = function (_Shape) {
 exports.default = Circle;
 
 /***/ }),
-/* 19 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1917,7 +1963,7 @@ var mapHelper = {
 exports.default = mapHelper;
 
 /***/ }),
-/* 20 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1927,41 +1973,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _mapHelper = __webpack_require__(19);
+var _mapHelper = __webpack_require__(22);
 
 var _mapHelper2 = _interopRequireDefault(_mapHelper);
 
-var _main = __webpack_require__(15);
+var _main = __webpack_require__(18);
 
 var _main2 = _interopRequireDefault(_main);
 
-__webpack_require__(9);
+var _template = __webpack_require__(12);
+
+var _template2 = _interopRequireDefault(_template);
+
+__webpack_require__(11);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var actionsTemplate = function actionsTemplate() {
-  return "\n    <span class=\"img-map-selection\">\n      <span class=\"img-map-shape-select\">\n        <input type=\"radio\" name=\"shapeSelect\" id=\"shape1\" value=\"circle\">\n        <label for=\"shape1\">Circle</label>\n      </span>\n      <span class=\"img-map-shape-select\">\n        <input type=\"radio\" name=\"shapeSelect\" id=\"shape2\" value=\"rectangle\">\n        <label for=\"shape2\">Rectangle</label>\n      </span>\n      <span class=\"img-map-shape-select\">\n        <input type=\"radio\" name=\"shapeSelect\" id=\"shape3\" value=\"polygon\">\n        <label for=\"shape3\">Polygon</label>\n      </span>\n    </span>\n    <span class=\"img-map-buttons\">\n      <button type=\"button\" class=\"img-map-btn\" onclick=\"app.clearCanvas(true)\">Clear</button>\n      <button type=\"button\" class=\"img-map-btn\" onclick=\"app.deleteMap()\">Delete Focused</button>\n    </span>\n  ";
-};
-
-var inputs = function inputs() {
-  return "\n    <label for=\"url\">URL: </label>\n    <input type=\"url\" id=\"map-url-input\" name=\"map-url-input\" class=\"img-map-url-input\" placeholder=\"https://www.validurl.com\" required/>\n  ";
-};
-
 var view = {
-  createDialogHtml: function createDialogHtml(editor) {
+  createDialogHtml: function createDialogHtml() {
     return new Promise(function (resolve) {
       var container = document.getElementById("img-map-container");
-      //Add canvas
-      var canvas = editor.dom.create("canvas", { id: "img-map-canvas" });
-      container.appendChild(canvas);
-      //Add actions
-      var actions = editor.dom.create("div", { id: "img-map-actions" });
-      actions.innerHTML = actionsTemplate();
-      container.appendChild(actions);
-      // Add inputs
-      var form = editor.dom.create("form", { id: "img-map-form" });
-      form.innerHTML = inputs();
-      container.appendChild(form);
+      container.innerHTML = _template2.default;
       resolve(container);
     });
   },
@@ -1976,8 +2008,10 @@ var view = {
     canvas.setAttribute("width", img.width);
     var urlInput = document.getElementById("map-url-input");
     var shapeSelectors = document.getElementsByName("shapeSelect");
+    var hint = document.getElementById('img-map-hint');
     var args = {
       canvas: canvas,
+      hint: hint,
       img: {
         src: img.src,
         height: img.height,
@@ -2007,7 +2041,7 @@ var view = {
 exports.default = view;
 
 /***/ }),
-/* 21 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2017,7 +2051,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _view = __webpack_require__(20);
+var _view = __webpack_require__(23);
 
 var _view2 = _interopRequireDefault(_view);
 
@@ -2035,7 +2069,7 @@ var openDialog = function openDialog(editor) {
         direction: "column",
         align: "center",
         html: '<div id="img-map-container"></div>',
-        minHeight: img.height + 80,
+        minHeight: img.height + 100,
         minWidth: img.width
       }],
       buttons: [{
@@ -2046,7 +2080,7 @@ var openDialog = function openDialog(editor) {
         _view2.default.destroy(editor, img);
       }
     });
-    _view2.default.createDialogHtml(editor).then(function () {
+    _view2.default.createDialogHtml().then(function () {
       return _view2.default.initApp(editor, img);
     });
   }
@@ -2054,6 +2088,7 @@ var openDialog = function openDialog(editor) {
 
 var plugin = function plugin(editor) {
   editor.addMenuItem("tinymceImageMap", {
+    icon: 'img-map-icon',
     text: "Image Map",
     onclick: function onclick() {
       return openDialog(editor);
@@ -2061,8 +2096,8 @@ var plugin = function plugin(editor) {
   });
 
   editor.addButton("tinymceImageMap", {
-    text: "Image Map",
-    icon: false,
+    tooltip: 'Image Map',
+    icon: 'img-map-icon',
     onclick: function onclick() {
       return openDialog(editor);
     }
@@ -2072,7 +2107,7 @@ var plugin = function plugin(editor) {
 exports.default = plugin;
 
 /***/ }),
-/* 22 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2082,7 +2117,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _plugin = __webpack_require__(21);
+var _plugin = __webpack_require__(24);
 
 var _plugin2 = _interopRequireDefault(_plugin);
 

@@ -21,8 +21,10 @@ const view = {
     canvas.setAttribute("width", img.width);
     const urlInput = document.getElementById("map-url-input");
     const shapeSelectors = document.getElementsByName("shapeSelect");
+    const hint = document.getElementById('img-map-hint');
     const args = {
       canvas: canvas,
+      hint: hint,
       img: {
         src: img.src,
         height: img.height,

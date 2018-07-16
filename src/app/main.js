@@ -17,6 +17,7 @@ class App {
     this.isMouseDown = false;
     this.img;
     this.urlInput = args.urlInput;
+    this.hint = args.hint;
     this.canvas.addEventListener("mousedown", e => this.mouseDown(e), false);
     this.canvas.addEventListener("mousemove", e => this.mouseMove(e), false);
     this.canvas.addEventListener("mouseup", e => this.mouseUp(e), false);
@@ -33,6 +34,7 @@ class App {
       this.clearCanvas();
       this.drawImage();
       this.shapes.forEach(r => r.draw());
+      this.showHint();
     }
   }
 
@@ -153,6 +155,18 @@ class App {
     const destSize = [0, 0, this.canvas.width, this.canvas.height];
     this.context.imageSmoothingEnabled = false;
     this.context.drawImage(this.img, ...destSize);
+  }
+
+  showHint() {
+    if (
+      this.shapeInProgress &&
+      this.shapeInProgress.type === "polygon" &&
+      this.shapeInProgress.drawing
+    ) {
+      this.hint.style.visibility = "visible";
+    } else {
+      this.hint.style.visibility = "hidden";
+    }
   }
 
   init() {
