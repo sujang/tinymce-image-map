@@ -2078,6 +2078,10 @@ exports.default = plugin;
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _plugin = __webpack_require__(21);
 
 var _plugin2 = _interopRequireDefault(_plugin);
@@ -2085,6 +2089,8 @@ var _plugin2 = _interopRequireDefault(_plugin);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 tinymce.PluginManager.add("tinymceImageMap", _plugin2.default);
+
+exports.default = _plugin2.default;
 
 /***/ })
 /******/ ]);
