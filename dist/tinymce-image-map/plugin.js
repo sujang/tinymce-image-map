@@ -959,7 +959,7 @@ function updateLink (link, options, obj) {
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__.p + "35622a02d9e23124f3a901ffb12f4482.png";
+module.exports = __webpack_require__.p + "map.png";
 
 /***/ }),
 /* 8 */
