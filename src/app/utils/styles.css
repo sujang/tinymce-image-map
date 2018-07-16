@@ -42,7 +42,7 @@
 
 i.mce-i-img-map-icon,
 i.mce-ico.mce-i-img-map-icon{
-  background-image: url('../map.png');
+  background-image: url('mapIcon.png');
   max-height: 16px;
   max-width: 16px;
   margin-right: 4px;
