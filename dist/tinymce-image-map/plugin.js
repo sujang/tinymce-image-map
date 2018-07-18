@@ -165,7 +165,7 @@ var Shape = function () {
     this.selected = false;
     this.resizing = false;
     this.path = new Path2D();
-    this.strokeStyle = "#000";
+    this.strokeStyle = "#2f4f4f";
     this.href = "";
   }
 
@@ -265,7 +265,7 @@ var Shape = function () {
     key: "deselect",
     value: function deselect() {
       this.selected = false;
-      this.strokeStyle = "#000";
+      this.strokeStyle = "#2f4f4f";
       return this;
     }
   }, {
@@ -293,6 +293,14 @@ var Shape = function () {
     value: function setHref(href) {
       this.href = href;
       return this;
+    }
+  }, {
+    key: "addTransparentFill",
+    value: function addTransparentFill(path) {
+      this.context.globalAlpha = 0.3;
+      this.context.fillStyle = "#c3c3c3";
+      this.context.fill(path);
+      this.context.globalAlpha = 1;
     }
   }, {
     key: "inUse",
@@ -1592,6 +1600,7 @@ var Polygon = function (_Shape) {
       this.path.closePath();
       this.context.strokeStyle = this.strokeStyle;
       this.context.stroke(this.path);
+      this.addTransparentFill(this.path);
     }
   }, {
     key: "getArea",
@@ -1709,6 +1718,7 @@ var Rectangle = function (_Shape) {
       this.path.rect(this.dimensions.shape.x, this.dimensions.shape.y, this.dimensions.shape.w, this.dimensions.shape.h);
       this.context.strokeStyle = this.strokeStyle;
       this.context.stroke(this.path);
+      this.addTransparentFill(this.path);
     }
   }, {
     key: "getArea",
@@ -1815,6 +1825,7 @@ var Circle = function (_Shape) {
       this.path.closePath();
       this.context.strokeStyle = this.strokeStyle;
       this.context.stroke(this.path);
+      this.addTransparentFill(this.path);
     }
   }, {
     key: "getArea",
@@ -2087,7 +2098,7 @@ var openDialog = function openDialog(editor) {
         align: "center",
         html: '<div id="img-map-container"></div>',
         minHeight: img.height + 100,
-        minWidth: img.width
+        minWidth: img.width > 450 ? img.width : 450
       }],
       buttons: [{
         text: "Done",
