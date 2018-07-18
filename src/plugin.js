@@ -13,8 +13,9 @@ const openDialog = editor => {
           direction: "column",
           align: "center",
           html: '<div id="img-map-container"></div>',
-          minHeight: img.height + 100,
-          minWidth: img.width > 450 ? img.width : 450
+          minHeight: img.height < 800 ? img.height + 100 : 900,
+          minWidth: img.width > 450 ? img.width : 450,
+          autoScroll: true
         }
       ],
       buttons: [

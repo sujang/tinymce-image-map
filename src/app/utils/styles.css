@@ -1,10 +1,17 @@
 #img-map-container {
   display: flex;
   flex-direction: column;
+  overflow: scroll;
+}
+
+#img-map-canvas-container{
+  display:flex;
+  justify-content: center;
+  max-height: 800px;
+  overflow: scroll;
 }
 
 #img-map-canvas {
-  align-self: center;
   border: 1px solid #AAAAAA;
 }
 
@@ -23,7 +30,7 @@
 #img-map-actions .img-map-btn {
   height: 28px;
   border: 1px solid #b3b3b3;
-  text-shadow: 0 1px 1px rgba(255,255,255,0.75);
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   padding: 4px 6px;
   cursor: pointer;
   box-sizing: border-box;
@@ -37,15 +44,14 @@
   margin: 0 auto;
 }
 
-#img-map-form .img-map-url-input{
+#img-map-form .img-map-url-input {
   width: 100%;
   margin-left: 16px;
   padding: 5px 6px;
   border: 1px solid #b3b3b3;
 }
 
-i.mce-i-img-map-icon,
-i.mce-ico.mce-i-img-map-icon{
+i.mce-i-img-map-icon, i.mce-ico.mce-i-img-map-icon {
   background-image: url('mapIcon.svg');
   max-height: 16px;
   max-width: 16px;

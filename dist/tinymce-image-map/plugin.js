@@ -1091,7 +1091,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, "#img-map-container {\n  display: flex;\n  flex-direction: column;\n}\n\n#img-map-canvas {\n  align-self: center;\n  border: 1px solid #AAAAAA;\n}\n\n#img-map-actions, #img-map-form, #img-map-hint {\n  display: flex;\n  align-items: center;\n  padding: 8px 0 0 3px;\n  height: auto;\n  line-height: 20px;\n}\n\n#img-map-actions {\n  justify-content: space-between;\n}\n\n#img-map-actions .img-map-btn {\n  height: 28px;\n  border: 1px solid #b3b3b3;\n  text-shadow: 0 1px 1px rgba(255,255,255,0.75);\n  padding: 4px 6px;\n  cursor: pointer;\n  box-sizing: border-box;\n}\n\n#img-map-actions .img-map-shape-select {\n  padding-right: .8px;\n}\n\n.img-map-shape-select input[type=radio] {\n  margin: 0 auto;\n}\n\n#img-map-form .img-map-url-input{\n  width: 100%;\n  margin-left: 16px;\n  padding: 5px 6px;\n  border: 1px solid #b3b3b3;\n}\n\ni.mce-i-img-map-icon,\ni.mce-ico.mce-i-img-map-icon{\n  background-image: url(" + escape(__webpack_require__(7)) + ");\n  max-height: 16px;\n  max-width: 16px;\n  margin-right: 4px;\n  padding-right: 0;\n}\n\n::placeholder {\n  color: #c3c3c3;\n}\n\n#img-map-hint {\n  visibility: hidden;\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, "#img-map-container {\n  display: flex;\n  flex-direction: column;\n  overflow: scroll;\n}\n\n#img-map-canvas-container{\n  display:flex;\n  justify-content: center;\n  max-height: 800px;\n  overflow: scroll;\n}\n\n#img-map-canvas {\n  border: 1px solid #AAAAAA;\n}\n\n#img-map-actions, #img-map-form, #img-map-hint {\n  display: flex;\n  align-items: center;\n  padding: 8px 0 0 3px;\n  height: auto;\n  line-height: 20px;\n}\n\n#img-map-actions {\n  justify-content: space-between;\n}\n\n#img-map-actions .img-map-btn {\n  height: 28px;\n  border: 1px solid #b3b3b3;\n  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);\n  padding: 4px 6px;\n  cursor: pointer;\n  box-sizing: border-box;\n}\n\n#img-map-actions .img-map-shape-select {\n  padding-right: .8px;\n}\n\n.img-map-shape-select input[type=radio] {\n  margin: 0 auto;\n}\n\n#img-map-form .img-map-url-input {\n  width: 100%;\n  margin-left: 16px;\n  padding: 5px 6px;\n  border: 1px solid #b3b3b3;\n}\n\ni.mce-i-img-map-icon, i.mce-ico.mce-i-img-map-icon {\n  background-image: url(" + escape(__webpack_require__(7)) + ");\n  max-height: 16px;\n  max-width: 16px;\n  margin-right: 4px;\n  padding-right: 0;\n}\n\n::placeholder {\n  color: #c3c3c3;\n}\n\n#img-map-hint {\n  visibility: hidden;\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -1125,7 +1125,7 @@ if(false) {}
 /* 12 */
 /***/ (function(module, exports) {
 
-module.exports = "<canvas id=\"img-map-canvas\">\n  Please upgrade your browser to display this image.\n</canvas>\n<div id=\"img-map-actions\">\n  <span class=\"img-map-selection\">\n    <span class=\"img-map-shape-select\">\n      <input type=\"radio\" name=\"shapeSelect\" id=\"shape1\" value=\"circle\">\n      <label for=\"shape1\">Circle</label>\n    </span>\n    <span class=\"img-map-shape-select\">\n      <input type=\"radio\" name=\"shapeSelect\" id=\"shape2\" value=\"rectangle\">\n      <label for=\"shape2\">Rectangle</label>\n    </span>\n    <span class=\"img-map-shape-select\">\n      <input type=\"radio\" name=\"shapeSelect\" id=\"shape3\" value=\"polygon\">\n      <label for=\"shape3\">Polygon</label>\n    </span>\n  </span>\n  <span class=\"img-map-buttons\">\n    <button type=\"button\" class=\"img-map-btn\" onclick=\"app.clearCanvas(true)\">Clear</button>\n    <button type=\"button\" class=\"img-map-btn\" onclick=\"app.deleteMap()\">Delete Focused</button>\n  </span>\n</div>\n<form id=\"img-map-form\">\n  <label for=\"url\">URL: </label>\n  <input type=\"text\" id=\"map-url-input\" name=\"map-url-input\" class=\"img-map-url-input\" placeholder=\"https://www.validurl.com\"\n    required/>\n</form>\n<div id=\"img-map-hint\">Hold Shift and left click to finish drawing the polygon</div>";
+module.exports = "<div id=\"img-map-canvas-container\">\n  <canvas id=\"img-map-canvas\">\n    Please upgrade your browser to display this image.\n  </canvas>\n</div>\n<div id=\"img-map-actions\">\n  <span class=\"img-map-selection\">\n    <span class=\"img-map-shape-select\">\n      <input type=\"radio\" name=\"shapeSelect\" id=\"shape1\" value=\"circle\">\n      <label for=\"shape1\">Circle</label>\n    </span>\n    <span class=\"img-map-shape-select\">\n      <input type=\"radio\" name=\"shapeSelect\" id=\"shape2\" value=\"rectangle\">\n      <label for=\"shape2\">Rectangle</label>\n    </span>\n    <span class=\"img-map-shape-select\">\n      <input type=\"radio\" name=\"shapeSelect\" id=\"shape3\" value=\"polygon\">\n      <label for=\"shape3\">Polygon</label>\n    </span>\n  </span>\n  <span class=\"img-map-buttons\">\n    <button type=\"button\" class=\"img-map-btn\" onclick=\"app.clearCanvas(true)\">Clear</button>\n    <button type=\"button\" class=\"img-map-btn\" onclick=\"app.deleteMap()\">Delete Focused</button>\n  </span>\n</div>\n<form id=\"img-map-form\">\n  <label for=\"url\">URL: </label>\n  <input type=\"text\" id=\"map-url-input\" name=\"map-url-input\" class=\"img-map-url-input\" placeholder=\"https://www.validurl.com\"\n    required/>\n</form>\n<div id=\"img-map-hint\">Hold Shift and left click to finish drawing the polygon</div>";
 
 /***/ }),
 /* 13 */
@@ -2097,8 +2097,9 @@ var openDialog = function openDialog(editor) {
         direction: "column",
         align: "center",
         html: '<div id="img-map-container"></div>',
-        minHeight: img.height + 100,
-        minWidth: img.width > 450 ? img.width : 450
+        minHeight: img.height < 800 ? img.height + 100 : 900,
+        minWidth: img.width > 450 ? img.width : 450,
+        autoScroll: true
       }],
       buttons: [{
         text: "Done",
