@@ -4,13 +4,14 @@
 }
 
 #img-map-canvas {
+  align-self: center;
   border: 1px solid #AAAAAA;
 }
 
 #img-map-actions, #img-map-form, #img-map-hint {
   display: flex;
   align-items: center;
-  padding: 8px .0 .0 3px;
+  padding: 8px 0 0 3px;
   height: auto;
   line-height: 20px;
 }
@@ -25,7 +26,6 @@
   text-shadow: 0 1px 1px rgba(255,255,255,0.75);
   padding: 4px 6px;
   cursor: pointer;
-  /* background-color: aquamarine; */
   box-sizing: border-box;
 }
 
