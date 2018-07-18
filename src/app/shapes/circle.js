@@ -29,6 +29,7 @@ class Circle extends Shape {
     this.path.closePath();
     this.context.strokeStyle = this.strokeStyle;
     this.context.stroke(this.path);
+    this.addTransparentFill(this.path);
   }
 
   getArea() {

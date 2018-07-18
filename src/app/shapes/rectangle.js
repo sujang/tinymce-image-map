@@ -16,6 +16,7 @@ class Rectangle extends Shape {
     );
     this.context.strokeStyle = this.strokeStyle;
     this.context.stroke(this.path);
+    this.addTransparentFill(this.path);
   }
 
   getArea() {

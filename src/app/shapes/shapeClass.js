@@ -15,7 +15,7 @@ class Shape {
     this.selected = false;
     this.resizing = false;
     this.path = new Path2D();
-    this.strokeStyle = "#000";
+    this.strokeStyle = "#2f4f4f";
     this.href = "";
   }
 
@@ -90,7 +90,7 @@ class Shape {
 
   deselect() {
     this.selected = false;
-    this.strokeStyle = "#000";
+    this.strokeStyle = "#2f4f4f";
     return this;
   }
 
@@ -114,6 +114,13 @@ class Shape {
   setHref(href) {
     this.href = href;
     return this;
+  }
+
+  addTransparentFill(path) {
+    this.context.globalAlpha = 0.3;
+    this.context.fillStyle = "#c3c3c3";
+    this.context.fill(path);
+    this.context.globalAlpha = 1;
   }
 
   inUse() {
