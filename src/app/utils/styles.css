@@ -33,6 +33,10 @@
   padding-right: .8px;
 }
 
+.img-map-shape-select input[type=radio] {
+  margin: 0 auto;
+}
+
 #img-map-form .img-map-url-input{
   width: 100%;
   margin-left: 16px;

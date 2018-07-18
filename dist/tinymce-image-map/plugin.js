@@ -302,7 +302,15 @@ var Shape = function () {
   }, {
     key: "toMapArea",
     value: function toMapArea() {
-      return new _mapArea2.default(this.type, this.getAreaCoords(), this.href);
+      var _this = this;
+
+      var href = function href() {
+        if (!/https?:\/\//.test(_this.href)) {
+          return "http://" + _this.href;
+        }
+        return _this.href;
+      };
+      return new _mapArea2.default(this.type, this.getAreaCoords(), href());
     }
   }]);
 
@@ -407,7 +415,7 @@ var MapArea = function () {
     this.shape = shape;
     this.coords = typeof coords === "string" ? coords : this.formatCoordsToString(coords);
     this.href = href;
-    this.target = '_blank';
+    this.target = "_blank";
   }
 
   _createClass(MapArea, [{
@@ -1075,7 +1083,7 @@ exports = module.exports = __webpack_require__(8)(false);
 
 
 // module
-exports.push([module.i, "#img-map-container {\n  display: flex;\n  flex-direction: column;\n}\n\n#img-map-canvas {\n  border: 1px solid #AAAAAA;\n}\n\n#img-map-actions, #img-map-form, #img-map-hint {\n  display: flex;\n  align-items: center;\n  padding: 8px .0 .0 3px;\n  height: auto;\n  line-height: 20px;\n}\n\n#img-map-actions {\n  justify-content: space-between;\n}\n\n#img-map-actions .img-map-btn {\n  height: 28px;\n  border: 1px solid #b3b3b3;\n  text-shadow: 0 1px 1px rgba(255,255,255,0.75);\n  padding: 4px 6px;\n  cursor: pointer;\n  /* background-color: aquamarine; */\n  box-sizing: border-box;\n}\n\n#img-map-actions .img-map-shape-select {\n  padding-right: .8px;\n}\n\n#img-map-form .img-map-url-input{\n  width: 100%;\n  margin-left: 16px;\n  padding: 5px 6px;\n  border: 1px solid #b3b3b3;\n}\n\ni.mce-i-img-map-icon,\ni.mce-ico.mce-i-img-map-icon{\n  background-image: url(" + escape(__webpack_require__(7)) + ");\n  max-height: 16px;\n  max-width: 16px;\n  margin-right: 4px;\n  padding-right: 0;\n}\n\n::placeholder {\n  color: #c3c3c3;\n}\n\n#img-map-hint {\n  visibility: hidden;\n  font-weight: bold;\n}", ""]);
+exports.push([module.i, "#img-map-container {\n  display: flex;\n  flex-direction: column;\n}\n\n#img-map-canvas {\n  border: 1px solid #AAAAAA;\n}\n\n#img-map-actions, #img-map-form, #img-map-hint {\n  display: flex;\n  align-items: center;\n  padding: 8px .0 .0 3px;\n  height: auto;\n  line-height: 20px;\n}\n\n#img-map-actions {\n  justify-content: space-between;\n}\n\n#img-map-actions .img-map-btn {\n  height: 28px;\n  border: 1px solid #b3b3b3;\n  text-shadow: 0 1px 1px rgba(255,255,255,0.75);\n  padding: 4px 6px;\n  cursor: pointer;\n  /* background-color: aquamarine; */\n  box-sizing: border-box;\n}\n\n#img-map-actions .img-map-shape-select {\n  padding-right: .8px;\n}\n\n.img-map-shape-select input[type=radio] {\n  margin: 0 auto;\n}\n\n#img-map-form .img-map-url-input{\n  width: 100%;\n  margin-left: 16px;\n  padding: 5px 6px;\n  border: 1px solid #b3b3b3;\n}\n\ni.mce-i-img-map-icon,\ni.mce-ico.mce-i-img-map-icon{\n  background-image: url(" + escape(__webpack_require__(7)) + ");\n  max-height: 16px;\n  max-width: 16px;\n  margin-right: 4px;\n  padding-right: 0;\n}\n\n::placeholder {\n  color: #c3c3c3;\n}\n\n#img-map-hint {\n  visibility: hidden;\n  font-weight: bold;\n}", ""]);
 
 // exports
 
@@ -1109,7 +1117,7 @@ if(false) {}
 /* 12 */
 /***/ (function(module, exports) {
 
-module.exports = "<canvas id=\"img-map-canvas\">\n  Please upgrade your browser to display this image.\n</canvas>\n<div id=\"img-map-actions\">\n  <span class=\"img-map-selection\">\n    <span class=\"img-map-shape-select\">\n      <input type=\"radio\" name=\"shapeSelect\" id=\"shape1\" value=\"circle\">\n      <label for=\"shape1\">Circle</label>\n    </span>\n    <span class=\"img-map-shape-select\">\n      <input type=\"radio\" name=\"shapeSelect\" id=\"shape2\" value=\"rectangle\">\n      <label for=\"shape2\">Rectangle</label>\n    </span>\n    <span class=\"img-map-shape-select\">\n      <input type=\"radio\" name=\"shapeSelect\" id=\"shape3\" value=\"polygon\">\n      <label for=\"shape3\">Polygon</label>\n    </span>\n  </span>\n  <span class=\"img-map-buttons\">\n    <button type=\"button\" class=\"img-map-btn\" onclick=\"app.clearCanvas(true)\">Clear</button>\n    <button type=\"button\" class=\"img-map-btn\" onclick=\"app.deleteMap()\">Delete Focused</button>\n  </span>\n</div>\n<form id=\"img-map-form\">\n  <label for=\"url\">URL: </label>\n  <input type=\"url\" id=\"map-url-input\" name=\"map-url-input\" class=\"img-map-url-input\" placeholder=\"https://www.validurl.com\"\n    required/>\n</form>\n<div id=\"img-map-hint\">Hold Shift and left click to finish drawing the polygon</div>";
+module.exports = "<canvas id=\"img-map-canvas\">\n  Please upgrade your browser to display this image.\n</canvas>\n<div id=\"img-map-actions\">\n  <span class=\"img-map-selection\">\n    <span class=\"img-map-shape-select\">\n      <input type=\"radio\" name=\"shapeSelect\" id=\"shape1\" value=\"circle\">\n      <label for=\"shape1\">Circle</label>\n    </span>\n    <span class=\"img-map-shape-select\">\n      <input type=\"radio\" name=\"shapeSelect\" id=\"shape2\" value=\"rectangle\">\n      <label for=\"shape2\">Rectangle</label>\n    </span>\n    <span class=\"img-map-shape-select\">\n      <input type=\"radio\" name=\"shapeSelect\" id=\"shape3\" value=\"polygon\">\n      <label for=\"shape3\">Polygon</label>\n    </span>\n  </span>\n  <span class=\"img-map-buttons\">\n    <button type=\"button\" class=\"img-map-btn\" onclick=\"app.clearCanvas(true)\">Clear</button>\n    <button type=\"button\" class=\"img-map-btn\" onclick=\"app.deleteMap()\">Delete Focused</button>\n  </span>\n</div>\n<form id=\"img-map-form\">\n  <label for=\"url\">URL: </label>\n  <input type=\"text\" id=\"map-url-input\" name=\"map-url-input\" class=\"img-map-url-input\" placeholder=\"https://www.validurl.com\"\n    required/>\n</form>\n<div id=\"img-map-hint\">Hold Shift and left click to finish drawing the polygon</div>";
 
 /***/ }),
 /* 13 */
@@ -1166,7 +1174,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var move = {
   onMouseDown: function onMouseDown(scope, coords) {
-    scope.focusedShape.select().drag().setMoveOffset(coords);
+    scope.focusedShape.drag().setMoveOffset(coords);
   },
   onMouseMove: function onMouseMove(scope, coords) {
     scope.focusedShape.updateStartPoint(coords).updateCoordinates();
@@ -1230,8 +1238,9 @@ var draw = {
 
 function finishDrawing() {
   this.shapeInProgress.finishDrawing();
-  this.shapeInProgress = undefined;
   this.shapes = this.shapes.filter(removeInvalidShape);
+  this.setFocusedShape(this.shapeInProgress);
+  this.shapeInProgress = undefined;
 }
 
 function removeInvalidShape(shape) {
@@ -1337,7 +1346,9 @@ var App = function () {
       return _this.mouseUp(e);
     }, false);
     this.urlInput.addEventListener("change", function (e) {
-      return _this.focusedShape.setHref(e.target.value);
+      if (_this.focusedShape) {
+        _this.focusedShape.setHref(e.target.value);
+      }
     });
     this.shapeSelectors.forEach(function (node) {
       return node.addEventListener("change", function () {
@@ -1447,6 +1458,7 @@ var App = function () {
       if (shape) {
         this.removeFocusedShape();
         this.focusedShape = shape;
+        this.focusedShape.select();
         this.urlInput.value = this.focusedShape.href;
       } else {
         this.removeFocusedShape();
@@ -1938,7 +1950,7 @@ var addMapElement = function addMapElement(editor, img) {
   var parent = img.parentNode;
   var name = generateUniqueMapName(Array.from(editor.dom.select("map")));
   editor.dom.add(parent, "map", { id: name, name: name });
-  img.useMap = name;
+  img.useMap = "#" + name;
   return editor.dom.select("map")[0];
 };
 
@@ -1950,14 +1962,17 @@ var mapHelper = {
   },
   write: function write(editor, img) {
     var app = document.app;
-    var map = editor.dom.select("map").length > 0 ? editor.dom.select("map")[0] : addMapElement(editor, img);
+    var map = editor.dom.select("map").find(function (item) {
+      return "#" + item.name === img.useMap;
+    }) || addMapElement(editor, img);
     clearAreas(map);
     app.shapes.forEach(function (shape) {
       var area = shape.toMapArea();
       var node = Object.assign(editor.dom.create("area"), area);
       map.append(node);
     });
-  }
+  },
+  addMapElement: addMapElement
 };
 
 exports.default = mapHelper;
@@ -2000,7 +2015,7 @@ var view = {
 
   initApp: function initApp(editor, img) {
     var map = editor.dom.select("map").find(function (item) {
-      return item.name === img.useMap;
+      return "#" + item.name === img.useMap;
     });
     var areas = img.useMap === "" ? [] : _mapHelper2.default.load(Array.from(map.children));
     var canvas = document.getElementById("img-map-canvas");
@@ -2008,7 +2023,7 @@ var view = {
     canvas.setAttribute("width", img.width);
     var urlInput = document.getElementById("map-url-input");
     var shapeSelectors = document.getElementsByName("shapeSelect");
-    var hint = document.getElementById('img-map-hint');
+    var hint = document.getElementById("img-map-hint");
     var args = {
       canvas: canvas,
       hint: hint,
@@ -2032,7 +2047,9 @@ var view = {
 
   destroy: function destroy(editor, img) {
     document.getElementById("map-url-input").blur();
-    _mapHelper2.default.write(editor, img);
+    if (document.app.shapes.length > 0) {
+      _mapHelper2.default.write(editor, img);
+    }
     document.app = {};
     document.getElementById("img-map-container").innerHTML = "";
   }

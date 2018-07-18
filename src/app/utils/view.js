@@ -1,6 +1,6 @@
 import mapHelper from "./mapHelper";
 import App from "../main";
-import template from './template.html';
+import template from "./template.html";
 import "./styles.css";
 
 const view = {
@@ -13,7 +13,9 @@ const view = {
   },
 
   initApp: (editor, img) => {
-    const map = editor.dom.select("map").find(item => item.name === img.useMap);
+    const map = editor.dom
+      .select("map")
+      .find(item => "#" + item.name === img.useMap);
     const areas =
       img.useMap === "" ? [] : mapHelper.load(Array.from(map.children));
     const canvas = document.getElementById("img-map-canvas");
@@ -21,7 +23,7 @@ const view = {
     canvas.setAttribute("width", img.width);
     const urlInput = document.getElementById("map-url-input");
     const shapeSelectors = document.getElementsByName("shapeSelect");
-    const hint = document.getElementById('img-map-hint');
+    const hint = document.getElementById("img-map-hint");
     const args = {
       canvas: canvas,
       hint: hint,
@@ -45,7 +47,9 @@ const view = {
 
   destroy: (editor, img) => {
     document.getElementById("map-url-input").blur();
-    mapHelper.write(editor, img);
+    if (document.app.shapes.length > 0) {
+      mapHelper.write(editor, img);
+    }
     document.app = {};
     document.getElementById("img-map-container").innerHTML = "";
   }

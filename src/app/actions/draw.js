@@ -39,8 +39,9 @@ const draw = {
 
 function finishDrawing() {
   this.shapeInProgress.finishDrawing();
-  this.shapeInProgress = undefined;
   this.shapes = this.shapes.filter(removeInvalidShape);
+  this.setFocusedShape(this.shapeInProgress);
+  this.shapeInProgress = undefined;
 }
 
 function removeInvalidShape(shape) {

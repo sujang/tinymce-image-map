@@ -21,9 +21,11 @@ class App {
     this.canvas.addEventListener("mousedown", e => this.mouseDown(e), false);
     this.canvas.addEventListener("mousemove", e => this.mouseMove(e), false);
     this.canvas.addEventListener("mouseup", e => this.mouseUp(e), false);
-    this.urlInput.addEventListener("change", e =>
-      this.focusedShape.setHref(e.target.value)
-    );
+    this.urlInput.addEventListener("change", e => {
+      if (this.focusedShape) {
+        this.focusedShape.setHref(e.target.value);
+      }
+    });
     this.shapeSelectors.forEach(node =>
       node.addEventListener("change", () => this.setShape(), false)
     );
@@ -117,6 +119,7 @@ class App {
     if (shape) {
       this.removeFocusedShape();
       this.focusedShape = shape;
+      this.focusedShape.select();
       this.urlInput.value = this.focusedShape.href;
     } else {
       this.removeFocusedShape();

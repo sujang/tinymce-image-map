@@ -8,7 +8,7 @@ class MapArea {
     this.coords =
       typeof coords === "string" ? coords : this.formatCoordsToString(coords);
     this.href = href;
-    this.target = '_blank';
+    this.target = "_blank";
   }
 
   formatCoordsToString(coords) {
@@ -16,7 +16,8 @@ class MapArea {
       case SHAPES.CIRCLE:
         return `${coords.cx},${coords.cy},${coords.r}`;
       case SHAPES.RECTANGLE:
-        return `${coords.x},${coords.y},${coords.x + coords.w},${coords.y + coords.h}`;
+        return `${coords.x},${coords.y},${coords.x + coords.w},${coords.y +
+          coords.h}`;
       case SHAPES.POLYGON:
         return coords.map(pair => `${pair.x},${pair.y}`).join(",");
       default:

@@ -1,7 +1,6 @@
 const move = {
   onMouseDown(scope, coords) {
     scope.focusedShape
-      .select()
       .drag()
       .setMoveOffset(coords);
   },

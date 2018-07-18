@@ -121,7 +121,13 @@ class Shape {
   }
 
   toMapArea() {
-    return new MapArea(this.type, this.getAreaCoords(), this.href);
+    const href = () => {
+      if (!/https?:\/\//.test(this.href)) {
+        return "http://" + this.href;
+      }
+      return this.href;
+    };
+    return new MapArea(this.type, this.getAreaCoords(), href());
   }
 }
 
