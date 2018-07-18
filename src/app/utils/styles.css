@@ -13,6 +13,7 @@
 
 #img-map-canvas {
   border: 1px solid #AAAAAA;
+  align-self: flex-start;
 }
 
 #img-map-actions, #img-map-form, #img-map-hint {
