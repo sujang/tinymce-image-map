@@ -6,9 +6,9 @@
   <script>
     tinymce.init({
       selector: 'textarea#editable',
-      plugins: 'tinymceImageMap code autoresize contextmenu',
-      toolbar: 'tinymceImageMap code',
-      contextmenu: "tinymceImageMap bold",
+      plugins: 'tinymceImageMap code link autoresize contextmenu',
+      toolbar: 'tinymceImageMap code link',
+      contextmenu: "tinymceImageMap bold link",
       width: 1000,
       autoresize_bottom_margin: 50,
       autoresize_max_height: 900
@@ -17,7 +17,7 @@
     //Initial content
     const initialHTML = `
     <div>
-      <p>Testing tinymceImageMap</p>
+      <p>Testing <a data-mce-href="https://www.bing.com" href="https://www.bing.com" data-mce-selected="inline-boundary">tinymceImageMap</a></p>
       <img src="static/assets/bulbs.jpeg" height="400" width="600" useMap="#testmap">
       <map name="testmap">
         <area shape="circle" href="https://www.google.com" coords="50,50,45" target="_blank"/>

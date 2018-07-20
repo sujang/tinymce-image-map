@@ -16,6 +16,9 @@ const view = {
     const map = editor.dom
       .select("map")
       .find(item => "#" + item.name === img.useMap);
+    if (!map) {
+      img.useMap = '';
+    }
     const areas =
       img.useMap === "" ? [] : mapHelper.load(Array.from(map.children));
     const canvas = document.getElementById("img-map-canvas");
@@ -47,9 +50,7 @@ const view = {
 
   destroy: (editor, img) => {
     document.getElementById("map-url-input").blur();
-    if (document.app.shapes.length > 0) {
-      mapHelper.write(editor, img);
-    }
+    mapHelper.write(editor, img);
     document.app = {};
     document.getElementById("img-map-container").innerHTML = "";
   }
