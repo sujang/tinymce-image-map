@@ -2133,7 +2133,7 @@ var plugin = function plugin(editor) {
     }
   });
 
-  editor.addMenuItem("tinymceImageMap", {
+  editor.addMenuItem("imageMap", {
     icon: "img-map-icon",
     text: "Image Map",
     onclick: function onclick() {
@@ -2141,7 +2141,7 @@ var plugin = function plugin(editor) {
     }
   });
 
-  editor.addButton("tinymceImageMap", {
+  editor.addButton("imageMap", {
     tooltip: "Image Map",
     icon: "img-map-icon",
     onclick: function onclick() {
@@ -2169,7 +2169,7 @@ var _plugin2 = _interopRequireDefault(_plugin);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-tinymce.PluginManager.add("tinymceImageMap", _plugin2.default);
+tinymce.PluginManager.add("imageMap", _plugin2.default);
 
 exports.default = _plugin2.default;
 

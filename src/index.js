@@ -1,5 +1,5 @@
 import plugin from "./plugin";
 
-tinymce.PluginManager.add("tinymceImageMap", plugin);
+tinymce.PluginManager.add("imageMap", plugin);
 
 export default plugin;
