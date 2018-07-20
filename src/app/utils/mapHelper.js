@@ -42,6 +42,7 @@ const mapHelper = {
     app.shapes.forEach(shape => {
       let area = shape.toMapArea();
       let node = Object.assign(editor.dom.create("area"), area);
+      node.style.cursor = 'text';
       map.append(node);
     });
   },
